@@ -9,33 +9,42 @@ export default function Contact() {
     "idle" | "sending" | "sent" | "error"
   >("idle");
 
+  const socialLinks = [
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/rizvanhawaldar",
+      icon: "🔗",
+    },
+    { name: "GitHub", url: "https://github.com/llrizvanll", icon: "💻" },
+    { name: "Twitter", url: "https://twitter.com/rizvanhawaldar", icon: "🐦" },
+  ];
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus("sending");
 
-    // Add your form submission logic here
-    // Example: API call to your backend or email service
-
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const formData = new FormData(e.currentTarget);
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const message = formData.get("message") as string;
+
+      const subject = `New Message from ${name}`;
+      // Create the email body with name, email, and message, each on its own line
+      const body = `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`;
+
+      // Open the default email client with pre-filled mailto link
+      window.location.href = `mailto:rizvan.g.h@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+
       setFormStatus("sent");
     } catch (error) {
       setFormStatus("error");
     }
   };
 
-  const socialLinks = [
-    { name: "LinkedIn", url: "https://linkedin.com/in/rizvanhawaldar", icon: "🔗" },
-    { name: "GitHub", url: "https://github.com/llrizvanll", icon: "💻" },
-    { name: "Twitter", url: "https://twitter.com/rizvanhawaldar", icon: "🐦" }
-  ];
-
   return (
-    <Section
-      id="contact"
-      className="bg-gradient-to-b from-fb-blue/5 to-white"
-    >
+    <Section id="contact" className="bg-gradient-to-b from-fb-blue/5 to-white">
       <div className="max-w-7xl mx-auto px-4 py-20">
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,7 +52,9 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-fb-black">Let's Connect</h2>
+          <h2 className="text-4xl font-bold mb-4 text-fb-black">
+            Let's Connect
+          </h2>
           <p className="text-fb-grey">
             Have a project in mind? Let's talk about it.
           </p>
@@ -87,6 +98,8 @@ export default function Contact() {
                   id="email"
                   name="email"
                   required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  title="Please enter a valid email address"
                   className="w-full px-4 py-3 bg-white border border-fb-grey/20 rounded-lg focus:ring-2 focus:ring-fb-blue focus:outline-none transition-all"
                 />
               </div>
@@ -159,26 +172,27 @@ export default function Contact() {
                 </p>
               </div>
             </div>
-
             {/* Social Links */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-fb-black">
-                Follow Me
-              </h3>
-              <div className="flex space-x-4">
-                {socialLinks.map((link) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="bg-fb-blue/10 p-3 rounded-full hover:bg-fb-blue/20 transition-colors text-fb-blue"
-                  >
-                    <span className="text-2xl">{link.icon}</span>
-                  </motion.a>
-                ))}
+            <div className="flex space-x-4">
+              <div>
+                <h3 className="text-xl font-semibold mb-4 text-fb-black">
+                  Follow Me
+                </h3>
+                <div className="flex space-x-4">
+                  {socialLinks.map((link) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="bg-fb-blue/10 p-3 rounded-full hover:bg-fb-blue/20 transition-colors text-fb-blue"
+                    >
+                      <span className="text-2xl">{link.icon}</span>
+                    </motion.a>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
