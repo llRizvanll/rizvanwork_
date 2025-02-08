@@ -114,9 +114,9 @@ export default function CompanyLogos() {
                   <p className="font-serif text-[#222222] font-medium">
                     {company.name}
                   </p>
-                  <p className="text-sm text-[#666666] mt-1">
+                  {/* <p className="text-sm text-[#666666] mt-1">
                     {company.year}
-                  </p>
+                  </p> */}
                   <p className="text-xs text-[#888888] mt-0.5 italic">
                     {company.location}
                   </p>
