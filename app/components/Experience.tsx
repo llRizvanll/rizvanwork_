@@ -10,7 +10,7 @@ export default function Experience() {
     {
       role: "Software Engineer III",
       company: "Loop Health",
-      period: "August 2022 - Present",
+      period: "August 2022 - November 2024",
       location: "Bangalore, India",
       description: [
         "Leading the development of Native and React Native mobile applications for healthcare and insurance industry",
@@ -72,6 +72,18 @@ export default function Experience() {
       ],
       location: "Bangalore, India",
       tech: ["Android", "Java", "Firebase", "WebRTC"],
+    },
+    {
+      role: "Software Engineer - Contract",
+      company: "US Clients",
+      period: "Present",
+      location: "Remote",
+      description: [
+        "Implementing Insurance and finance based work for mobile apps",
+        "Collaborating with Product Managers and stakeholders to enhance mobile app functionality",
+        "Lets discuss over a phone call for more details if required..."
+      ],
+      tech: ["React Native", "Android", "iOS", "TypeScript", "Redux", "Kotlin", "Java"],
     },
   ];
 
