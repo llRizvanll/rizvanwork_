@@ -166,8 +166,9 @@ export default function Skills() {
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              "Git", "CI/CD", "Firebase", "Redux", "GraphQL", "REST APIs",
-              "Unit Testing", "Agile", "Scrum", "Team Leadership"
+              "Git", "Jenkins", "Firebase", "Redux", "GraphQL", "REST APIs",
+              "Unit Testing", "Agile", "Scrum", "Team Leadership", "Jest", "Performance improvements","Migration native to react native",
+              "Migration react native to native","OneSignal", "Huewai apps management","Push Notifications","Github actions","fastlane"
             ].map((skill) => (
               <motion.span
                 key={skill}
