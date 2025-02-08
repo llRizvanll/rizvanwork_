@@ -6,32 +6,35 @@ import Image from "next/image";
 
 export default function About() {
   const stats = [
-    { label: 'Years Experience', value: '12+' },
-    { label: 'Projects Completed', value: '10+' },
-    { label: 'Companies Worked', value: '7+' },
-    { label: 'Mobile Apps', value: '10+' }
+    { label: "Years Experience", value: "12+" },
+    { label: "Projects Completed", value: "10+" },
+    { label: "Companies Worked", value: "7+" },
+    { label: "Mobile Apps", value: "10+" },
   ];
 
   const keyPoints = [
     {
-      title: 'Mobile Development Specialist',
-      description: 'Specialized in Native and React Native mobile applications with a focus on performance and user experience.',
-      icon: '📱'
+      title: "Mobile Development Specialist",
+      description:
+        "Specialized in Native and React Native mobile applications with a focus on performance and user experience.",
+      icon: "📱",
     },
     {
-      title: 'Full Stack Developer',
-      description: 'Experienced in both frontend and backend development, creating comprehensive solutions.',
-      icon: '💻'
+      title: "Full Stack Developer",
+      description:
+        "Experienced in both frontend and backend development, creating comprehensive solutions.",
+      icon: "💻",
     },
     {
-      title: 'Mobile DevOps Engineer',
-      description: 'Mobile with cloud integrated build pipeline management solution engineer.',
-      icon: '📱'
-    }
+      title: "Mobile DevOps Engineer",
+      description:
+        "Mobile with cloud integrated build pipeline management solution engineer.",
+      icon: "📱",
+    },
   ];
 
   // For placeholder image
-  const placeholderImage = "/profile_image.jpeg"
+  const placeholderImage = "/profile_image.jpeg";
 
   return (
     <Section id="about" className="bg-gradient-to-b from-fb-blue/5 to-white">
@@ -57,7 +60,7 @@ export default function About() {
             className="relative"
           >
             <div className="aspect-square relative rounded-2xl overflow-hidden">
-            <Image
+              <Image
                 src={placeholderImage}
                 alt="Profile"
                 fill
@@ -92,12 +95,12 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-fb-black">
               Hello, I'm <span className="text-fb-blue">Mohammed Rizvan</span>
             </h3>
-            
+
             <p className="text-fb-grey leading-relaxed">
-              With 10+ years of experience primarily in Mobile Applications, I have a strong 
-              inclination towards full-stack development. My expertise lies in spearheading 
-              app development, fostering collaboration, and enhancing user experiences across 
-              diverse projects.
+              12+ years of experience in application development with
+              Android,Java,Kotlin, and React Native. Respectfully have worked
+              with startups and MNCs, worked on real face-value products that
+              are used by millions of users.
             </p>
 
             {/* Stats Grid */}
@@ -111,7 +114,9 @@ export default function About() {
                   whileHover={{ scale: 1.05 }}
                   className="text-center p-4 bg-white rounded-lg shadow-lg border border-fb-grey/10"
                 >
-                  <h4 className="text-3xl font-bold text-fb-blue">{stat.value}</h4>
+                  <h4 className="text-3xl font-bold text-fb-blue">
+                    {stat.value}
+                  </h4>
                   <p className="text-fb-grey text-sm">{stat.label}</p>
                 </motion.div>
               ))}
@@ -129,7 +134,9 @@ export default function About() {
                 >
                   <span className="text-2xl">{point.icon}</span>
                   <div>
-                    <h4 className="text-lg font-semibold text-fb-blue">{point.title}</h4>
+                    <h4 className="text-lg font-semibold text-fb-blue">
+                      {point.title}
+                    </h4>
                     <p className="text-fb-grey text-sm">{point.description}</p>
                   </div>
                 </motion.div>
