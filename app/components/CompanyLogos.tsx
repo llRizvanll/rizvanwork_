@@ -24,6 +24,13 @@ export default function CompanyLogos() {
       location: "Bangalore, India"
     },
     {
+        name: "Justdial",
+        logo: "/images/companies/jd.webp",
+        alt: "Justdial Logo",
+        year: "2012-2016",
+        location: "Mumbai, India"
+      },
+    {
       name: "Shaw Academy",
       logo: "/images/companies/sh.png",
       alt: "Shaw Academy Logo",
@@ -38,11 +45,11 @@ export default function CompanyLogos() {
       location: "Mumbai, India"
     },
     {
-      name: "Justdial",
-      logo: "/images/companies/jd.webp",
-      alt: "Justdial Logo",
-      year: "2012-2016",
-      location: "Mumbai, India"
+      name: "Swiftsku",
+      logo: "/images/companies/swiftsku.png",
+      alt: "Swiftsku USA",
+      year: "2023-2023",
+      location: "Remote, USA"
     },
     {
       name: "NCR",
@@ -56,13 +63,6 @@ export default function CompanyLogos() {
       logo: "/images/companies/expedia.webp",
       alt: "Expedia Logo",
       year: "2024-2024",
-      location: "Remote, USA"
-    },
-    {
-      name: "Swiftsku",
-      logo: "/images/companies/swiftsku.png",
-      alt: "Swiftsku USA",
-      year: "2023-2023",
       location: "Remote, USA"
     }
   ];
