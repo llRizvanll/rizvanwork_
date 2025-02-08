@@ -37,9 +37,9 @@ export default function Skills() {
       icon: "⚙️",
       skills: [
         { name: "Node.js", level: 4 },
-        { name: "Python", level: 4 },
-        { name: "AWS", level: 3.5 },
-        { name: "Docker", level: 4 }
+        { name: "CI/CD", level: 4 },
+        { name: "Python", level: 3.5 },
+        { name: "Cloud Services", level: 4 }
       ]
     }
   ];
