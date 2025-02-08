@@ -7,13 +7,14 @@ export default function Hero() {
   // List of technologies you work with
   const techSkills = [
     { name: "React Native", logo: "/images/tech/rn_banner.png" },
-    { name: "AI+ML", logo: "/images/tech/ai_plus_banner.jpg" },
     { name: "Ts/Js", logo: "/images/tech/jt_banner.webp" },
     { name: "Kotlin", logo: "/images/tech/kt_banner.png" },
-    { name: "Java", logo: "/images/tech/jv_banner.png" },
-    { name: "A-I", logo: "/images/tech/ai_banner.webp" },
-    { name: "Python", logo: "/images/tech/py_banner.png" },
     { name: "Mobile DevOps", logo: "/images/tech/md_banner.png" },
+    { name: "A-I", logo: "/images/tech/ai_banner.webp" },
+    { name: "AI+ML", logo: "/images/tech/ai_plus_banner.jpg" },
+    { name: "Java", logo: "/images/tech/jv_banner.png" },
+    { name: "Python", logo: "/images/tech/py_banner.png" },
+    
   ];
 
   return (
@@ -51,7 +52,7 @@ export default function Hero() {
             Get in Touch
           </motion.a>
           <motion.a
-            href="/resume.pdf"
+            href="/assets/rizvan_hawaldar_2024.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition-colors"
@@ -68,9 +69,9 @@ export default function Hero() {
         <motion.div
           className="flex items-center space-x-12 py-10"
           initial={{ x: "0%" }}
-          animate={{ x: ["20%", "20%", "-20%"] }}
+          animate={{ x: ["20%", "0%", "-30%"] }}
           transition={{
-            duration: 120,
+            duration: 20,
             ease: "easeInOut",
             repeat: Infinity,
             repeatType: "loop",
@@ -78,7 +79,7 @@ export default function Hero() {
         >
           {techSkills.map((skill) => (
             <div key={skill.name} className="flex-shrink-0">
-              <div className="w-28 h-28 relative">
+              <div className="w-64 h-64 relative">
                 <Image
                   src={skill.logo}
                   alt={skill.name}

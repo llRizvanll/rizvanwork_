@@ -6,15 +6,15 @@ import Image from "next/image";
 
 export default function About() {
   const stats = [
-    { label: 'Years Experience', value: '10+' },
-    { label: 'Projects Completed', value: '50+' },
-    { label: 'Companies Worked', value: '5+' },
-    { label: 'Mobile Apps', value: '20+' }
+    { label: 'Years Experience', value: '12+' },
+    { label: 'Projects Completed', value: '10+' },
+    { label: 'Companies Worked', value: '7+' },
+    { label: 'Mobile Apps', value: '10+' }
   ];
 
   const keyPoints = [
     {
-      title: 'Mobile Development Expert',
+      title: 'Mobile Development Specialist',
       description: 'Specialized in Native and React Native mobile applications with a focus on performance and user experience.',
       icon: '📱'
     },
@@ -24,9 +24,9 @@ export default function About() {
       icon: '💻'
     },
     {
-      title: 'Team Leader',
-      description: 'Led and mentored development teams, fostering collaboration and innovation.',
-      icon: '👥'
+      title: 'Mobile DevOps Engineer',
+      description: 'Mobile with cloud integrated build pipeline management solution engineer.',
+      icon: '📱'
     }
   ];
 
@@ -148,7 +148,7 @@ export default function About() {
                 Contact Me
               </a>
               <a
-                href="/resume.pdf"
+                href="/assets/rizvan_hawaldar_2024.pdf"
                 className="px-6 py-3 border-2 border-fb-blue text-fb-blue rounded-lg hover:bg-fb-blue/5 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"

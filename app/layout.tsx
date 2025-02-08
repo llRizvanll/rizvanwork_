@@ -7,8 +7,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Your Site Title',
-  description: 'Your Site Description',
+  title: 'rizvan.work',
+  description: 'Portfolio!',
 };
 
 export default function RootLayout({

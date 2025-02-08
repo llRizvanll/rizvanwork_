@@ -201,7 +201,7 @@ export default function Experience() {
             Key Achievements
           </h3>
           <p className="text-fb-grey">
-            Successfully delivered 20+ mobile applications, led multiple
+            Successfully delivered 10+ mobile applications, led multiple
             development teams, and implemented innovative solutions that
             improved user engagement and business metrics.
           </p>
