@@ -47,7 +47,7 @@ export default function Experience() {
       tech: ["Android", "Java", "Firebase", "WebRTC"],
     },
     {
-      year: "2015 - 2016",
+      period: "2015 - 2016",
       role: "Project Lead",
       company: "Xelp Design and Tech",
       location: "Bangalore, India",
@@ -60,7 +60,7 @@ export default function Experience() {
       tech: ["Android", "Java", "Firebase", "WebRTC"],
     },
     {
-      year: "2012 - 2016",
+      period: "2012 - 2016",
       role: "Team Lead - Software Engineer",
       company: "Justdial Limited",
       description: [
