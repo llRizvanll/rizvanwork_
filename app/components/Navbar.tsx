@@ -34,7 +34,7 @@ export default function Navbar() {
           </motion.a>
           
           <div className="hidden md:flex space-x-8">
-            {['About', 'Experience', 'Skills', 'Education', 'Contact'].map((item) => (
+            {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
