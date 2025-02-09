@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
   const techSkills = [
@@ -15,7 +16,23 @@ export default function Hero() {
     { name: "Python", logo: "/images/tech/py_banner.png" },
   ];
 
-  const mobile = window.innerWidth < 950;
+  const [mobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Check for mobile viewport width after component mounts
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 950)
+    }
+    
+    // Initial check
+    checkMobile()
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile)
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   const easeMotion = "linear"
   return (
     <section className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-white">
