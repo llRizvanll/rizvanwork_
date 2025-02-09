@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Section from './Section'
 import Image from 'next/image'
 import { useState } from 'react'
+import GitHubRepos from './GitHubRepos'
 // List of technologies you work with
 const techSkills = [
   { name: "React Native", logo: "/images/tech/rn_banner.png" },
@@ -182,7 +183,8 @@ export default function Projects() {
         </motion.div>
         ) : (
           <div className="text-center mt-8">
-            <p className="text-fb-grey">More projects to be found, explore my GitHub.</p>
+            {/* <p className="text-fb-grey">Explore my GitHub.</p> */}
+            <GitHubRepos />
           </div>
         )}
 
