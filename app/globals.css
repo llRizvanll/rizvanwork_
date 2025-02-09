@@ -15,6 +15,7 @@ body {
     transparent,
     rgb(var(--background-end-rgb))
   );
+  cursor: none;
 }
 
 /* Add this to ensure proper stacking */

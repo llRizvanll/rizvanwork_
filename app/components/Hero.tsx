@@ -17,6 +17,7 @@ export default function Hero() {
   ];
 
   const [mobile, setIsMobile] = useState(false)
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     // Check for mobile viewport width after component mounts
@@ -30,8 +31,17 @@ export default function Hero() {
     // Add event listener for window resize
     window.addEventListener('resize', checkMobile)
     
+    // Add event listener for mouse move
+    const handleMouseMove = (event: MouseEvent) => {
+      setCursorPosition({ x: event.clientX, y: event.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    
     // Cleanup
-    return () => window.removeEventListener('resize', checkMobile)
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
   }, [])
   const easeMotion = "linear"
   return (
@@ -164,12 +174,28 @@ export default function Hero() {
               repeat: Infinity
             }}
           >
-            <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex items-center justify-center">
-              <div className="w-1 h-2 bg-gray-300 rounded-full mt-2"></div>
+            <div className="w-6 h-10 border-2 border-blue-900 rounded-full flex items-center justify-center">
+              <div className="w-1 h-2 bg-green-300 rounded-full mt-2"></div>
             </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Custom Cursor */}
+      <div
+        className="fixed pointer-events-none"
+        style={{
+          left: `${cursorPosition.x}px`,
+          top: `${cursorPosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          width: '20px',
+          height: '20px',
+          borderRadius: '50%',
+          backgroundColor: 'rgba(0, 123, 255, 0.8)', // Change color here
+          transition: 'background-color 0.2s ease, transform 0.2s ease',
+          zIndex: 1000,
+        }}
+      />
     </section>
   );
 }
