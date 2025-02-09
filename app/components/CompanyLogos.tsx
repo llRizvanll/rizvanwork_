@@ -101,7 +101,7 @@ export default function CompanyLogos() {
                 className="group"
               >
                 <div className="relative w-40 h-20 mb-4 transition-all duration-300
-                              filter grayscale hover:grayscale-0">
+                              filter ">
                   <Image
                     src={company.logo}
                     alt={company.alt}
