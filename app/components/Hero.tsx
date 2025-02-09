@@ -182,7 +182,7 @@ export default function Hero() {
       </div>
 
       {/* Custom Cursor */}
-      <div
+      {!mobile && <div
         className="fixed pointer-events-none"
         style={{
           left: `${cursorPosition.x}px`,
@@ -195,7 +195,7 @@ export default function Hero() {
           transition: 'background-color 0.2s ease, transform 0.2s ease',
           zIndex: 1000,
         }}
-      />
+      />}
     </section>
   );
 }
