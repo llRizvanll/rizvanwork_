@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}> {/* This will add the variable to your document */}
       <body>{children}</body>
+      <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
     </html>
   );
 }
