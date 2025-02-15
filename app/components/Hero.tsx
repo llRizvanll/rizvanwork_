@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { trackEvent } from "../GoogleAnalytics";
 
 export default function Hero() {
   const techSkills = [
@@ -43,6 +44,22 @@ export default function Hero() {
       window.removeEventListener('mousemove', handleMouseMove)
     }
   }, [])
+  const handleGetInTouchClick = () => {
+    trackEvent(
+      'click',
+      'contact',
+      'get_in_touch_button'
+    );
+  };
+
+  const handleDownloadCVClick = () => {
+    trackEvent(
+      'click',
+      'download',
+      'cv_download_button'
+    );
+  };
+
   const easeMotion = "linear"
   return (
     <section className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-white">
@@ -97,6 +114,7 @@ export default function Hero() {
             >
               <motion.a
                 href="#contact"
+                onClick={handleGetInTouchClick}
                 className="px-4 py-2 md:px-6 md:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors duration-300 touch-none"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -107,6 +125,7 @@ export default function Hero() {
                 href="/assets/rizvan_hawaldar_2024.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleDownloadCVClick}
                 className="px-4 py-2 md:px-6 md:py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-300 touch-none"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

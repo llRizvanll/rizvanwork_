@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable}`}> {/* This will add the variable to your document */}
+     <GoogleAnalytics />
       <body>{children}</body>
       {/* <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  /> */}
-      <GoogleAnalytics />
     </html>
   );
 }

@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from "react";
 import Section from "./Section";
+import { trackEvent } from '../GoogleAnalytics';
 
 export interface SocialLink {
   name: string;
@@ -105,6 +106,13 @@ const Contact: React.FC = () => {
       )}&body=${encodeURIComponent(body)}`;
 
       setFormStatus("sent");
+      
+        trackEvent(
+          'click',
+          'contact',
+          'send_message_button'
+        );
+      
     } catch (error) {
       setFormStatus("error");
     }
