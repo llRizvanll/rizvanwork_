@@ -24,7 +24,7 @@ export default function Projects() {
       title: "Healthcare Mobile App",
       description:
         "React Native application for healthcare and insurance industry with real-time consultations.",
-      tech: ["React Native", "TypeScript", "Redux", "Firebase"],
+      tech: ["React Native", "TypeScript", "Redux", "Firebase", "Kotlin", "Ts/Js", "Mobile DevOps"],
       image: "/images/companies/lh_banner.webp",
       link: "https://play.google.com/store/apps/details?id=com.invoqhealth.loophealth.patient&hl=en",
       category: "Mobile",
@@ -38,7 +38,7 @@ export default function Projects() {
     {
       title: "AI Visualization Framework",
       description: "Framework for visualizing AI/ML data with interactive components.",
-      tech: ["Python", "React", "D3.js", "TensorFlow"],
+      tech: ["Python", "React Native", "D3.js", "TensorFlow", "Kotlin", "Ts/Js", "Mobile DevOps"],
       image: "/images/companies/ai_ge.png",
       link: "https://bakerhughes.com",
       category: "Mobile/Web/AI",
@@ -53,7 +53,7 @@ export default function Projects() {
       title: "Logistics Platform",
       description:
         "Android application for fleet management and transport operations.",
-      tech: ["Kotlin", "Android", "Google Maps API", "Firebase"],
+      tech: ["Kotlin", "Android", "Google Maps API", "Firebase", "Ts/Js", "React Native", "iOS"],
       image: "/images/companies/4tigo_banner.jpg",
       link: "https://www.xelpmoc.in/4tigo",
       category: "Mobile",
