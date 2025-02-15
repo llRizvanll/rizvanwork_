@@ -127,8 +127,8 @@ export default function Hero() {
           className="flex items-center space-x-12 py-12"
           initial={{ x: "0%" }}
           animate={{
-            x: mobile ? ["-10%", "0%", "-600%"] : ["-10%", "0%", "-100%"],
-            scale: [1.2, 1, 0.95]
+            x: mobile ? ["20%", "0%", "-950%"] : ["50%", "0%", "-120%"],
+            scale: [1.5, 1.2, 1.5]
           }}
           transition={{
             duration: mobile ? 20  : 20,
