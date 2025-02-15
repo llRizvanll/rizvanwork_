@@ -59,14 +59,14 @@ const CompanyLogos: React.FC = () => {
       name: "Expedia",
       logo: "/images/companies/expedia.webp",
       alt: "Expedia Logo",
-      year: "2024-2024",
+      year: "2022-2023",
       location: "Remote, USA",
     },
     {
       name: "Irish Life",
       logo: "/images/companies/irishlife.svg",
       alt: "Irish Life Logo",
-      year: "2023-2024",
+      year: "2022-2023",
       location: "Remote, Ireland(Europe)",
     }
   ];
