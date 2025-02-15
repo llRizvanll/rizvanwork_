@@ -62,6 +62,13 @@ const CompanyLogos: React.FC = () => {
       year: "2024-2024",
       location: "Remote, USA",
     },
+    {
+      name: "Irish Life",
+      logo: "/images/companies/irishlife.svg",
+      alt: "Irish Life Logo",
+      year: "2023-2024",
+      location: "Remote, Ireland(Europe)",
+    }
   ];
 
   return (
