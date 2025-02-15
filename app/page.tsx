@@ -2,8 +2,8 @@
 
 import { motion, useScroll } from 'framer-motion'
 import Hero from './components/Hero'
-import About from './components/About'
-import Experience from './components/Experience'
+import About from './components/about/About'
+import Experience from './components/experience/Experience'
 import Skills from './components/Skills'
 import Education from './components/Education'
 import Projects from './components/Projects'
