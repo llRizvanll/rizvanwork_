@@ -122,47 +122,46 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Auto-scrolling Tech Logos Banner */}
-        <div className="w-full overflow-hidden">
-          <motion.div
-            className="flex items-center space-x-8 py-10"
-            initial={{ x: "0%" }}
-            animate={{
-              x: mobile? ["-10%", "0%", "-600%"] : ["-10%", "0%", "-100%"],
-              scale: [1.5, 1, 0.9]
-            }}
-            transition={{
-              duration: mobile ? 20 : 20,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "loop",
-            }}
-          >
-            {techSkills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                className={`flex-shrink-0 ${index % 2 === 0 ? "opacity-100" : "opacity-50"}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ 
-                  opacity: 1,
-                  scale: 1
-                }}
-                transition={{
-                  delay: Math.random() * 2 + (index % 4 === 0 ? 1 : 0)
-                }}
-              >
-                <div className="w-72 h-72 relative">
-                  <Image
-                    src={skill.logo}
-                    alt={skill.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        {/* Update the tech skills banner styling */}
+        <motion.div
+          className="flex items-center space-x-12 py-12"
+          initial={{ x: "0%" }}
+          animate={{
+            x: mobile ? ["-10%", "0%", "-600%"] : ["-10%", "0%", "-100%"],
+            scale: [1.2, 1, 0.95]
+          }}
+          transition={{
+            duration: mobile ? 20  : 20,
+            ease: "linear",
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+        >
+          {techSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              className={`flex-shrink-0 hover:scale-110 transition-transform duration-300 
+                ${index % 2 === 0 ? "opacity-90" : "opacity-70"}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ 
+                opacity: 1,
+                scale: 1
+              }}
+              transition={{
+                delay: Math.random() * 2 + (index % 4 === 0 ? 1 : 0)
+              }}
+            >
+              <div className="w-64 h-64 relative filter hover:brightness-110">
+                <Image
+                  src={skill.logo}
+                  alt={skill.name}
+                  fill
+                  className="object-contain drop-shadow-lg"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* Fixed Scroll Indicator */}
         <div className="relative inset-x-0 bottom-6 flex justify-center mt-30">
