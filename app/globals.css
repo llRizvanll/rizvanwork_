@@ -55,3 +55,47 @@ section {
   }
 }
 
+/* Add this to your globals.css or relevant CSS file */
+.bg-white {
+  background-color: #ffffff;
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.transition-transform {
+  transition: transform 0.3s ease;
+}
+
+.transform:hover {
+  transform: translateY(-5px);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.text-gray-600 {
+  color: #4a5568;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.text-blue-500 {
+  color: #3b82f6;
+}
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.hover\:bg-blue-600:hover {
+  background-color: #2563eb;
+}
+
+.bg-gradient-to-b {
+  background: linear-gradient(to bottom, #ffffff, #f0f9ff);
+}
