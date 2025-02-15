@@ -128,7 +128,7 @@ export default function Hero() {
           initial={{ x: "0%" }}
           animate={{
             x: mobile ? ["20%", "0%", "-950%"] : ["50%", "0%", "-120%"],
-            scale: [1.5, 1.2, 1.5]
+            scale: [1.2, 1, 1]
           }}
           transition={{
             duration: mobile ? 20  : 20,
