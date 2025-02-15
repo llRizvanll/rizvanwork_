@@ -1,23 +1,90 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useState } from "react";
 import Section from "./Section";
 
-export default function Contact() {
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: string;
+  color: string;
+  hoverBg: string;
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/rizvanhawaldar",
+    icon: "🔗",
+    color: "#0077B5",
+    hoverBg: "#E7F3F9",
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/llrizvanll",
+    icon: "💻",
+    color: "#333333",
+    hoverBg: "#F0F0F0",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/rizvanhawaldar",
+    icon: "🐦",
+    color: "#1DA1F2",
+    hoverBg: "#E8F5FE",
+  },
+  {
+    name: "Email",
+    url: "mailto:rizvan.g.h@gmail.com",
+    icon: "📧",
+    color: "#EA4335",
+    hoverBg: "#FCE8E6",
+  },
+];
+
+interface SocialLinkItemProps {
+  link: SocialLink;
+  delay: number;
+}
+
+const SocialLinkItem: React.FC<SocialLinkItemProps> = ({ link, delay }) => {
+  return (
+    <motion.a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+    >
+      <motion.div
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-white border-2 border-airbnb-grey transition-all duration-300"
+        whileHover={{
+          scale: 1.1,
+          backgroundColor: link.hoverBg,
+          borderColor: link.color,
+        }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <span className="text-2xl">{link.icon}</span>
+      </motion.div>
+      <motion.span
+        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm text-airbnb-light opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        {link.name}
+      </motion.span>
+    </motion.a>
+  );
+};
+
+const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "sent" | "error"
   >("idle");
 
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/rizvanhawaldar",
-      icon: "🔗",
-    },
-    { name: "GitHub", url: "https://github.com/llrizvanll", icon: "💻" },
-    { name: "Twitter", url: "https://twitter.com/rizvanhawaldar", icon: "🐦" },
-  ];
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus("sending");
@@ -179,18 +246,8 @@ export default function Contact() {
                   Follow Me
                 </h3>
                 <div className="flex space-x-4">
-                  {socialLinks.map((link) => (
-                    <motion.a
-                      key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="bg-fb-blue/10 p-3 rounded-full hover:bg-fb-blue/20 transition-colors text-fb-blue"
-                    >
-                      <span className="text-2xl">{link.icon}</span>
-                    </motion.a>
+                  {socialLinks.map((link, index) => (
+                    <SocialLinkItem key={link.name} link={link} delay={index * 0.1} />
                   ))}
                 </div>
               </div>
@@ -200,4 +257,6 @@ export default function Contact() {
       </div>
     </Section>
   );
-}
+};
+
+export default Contact;
