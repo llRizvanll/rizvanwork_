@@ -116,9 +116,9 @@ export default function Hero() {
             </motion.div>
 
             {/* Animated underline effect */}
-            <div className="relative mt-4">
+            {/* <div className="relative mt-4">
               <div className="absolute bottom-1 left-0 right-0 h-1 bg-gray-200 origin-left animate-fade-in-out"></div>
-            </div>
+            </div> */}
           </div>
         </motion.div>
 
