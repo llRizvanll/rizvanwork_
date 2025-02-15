@@ -2,15 +2,15 @@
 
 import { motion, useScroll } from 'framer-motion'
 import Hero from './components/Hero'
-import About from './components/About'
-import Experience from './components/Experience'
+import About from './components/about/About'
+import Experience from './components/experience/Experience'
 import Skills from './components/Skills'
 import Education from './components/education/Education'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import { useEffect } from 'react'
-import CompanyLogos from './components/CompanyLogos'
+import CompanyLogos from './components/experience/CompanyLogos'
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
