@@ -2,11 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Cereal';
+  src: url('/fonts/AirbnbCereal-Light.otf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Cereal';
+  src: url('/fonts/AirbnbCereal-Book.otf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Cereal';
+  src: url('/fonts/AirbnbCereal-Medium.otf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Cereal';
+  src: url('/fonts/AirbnbCereal-Bold.otf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Cereal';
+  src: url('/fonts/AirbnbCereal-XBold.otf') format('truetype');
+  font-weight: 900;
+}
+
+/* Airbnb Color Variables */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --airbnb-red: #FF385C;
+  --airbnb-dark: #222222;
+  --airbnb-light: #717171;
+  --airbnb-grey: #DDDDDD;
+  --airbnb-black: #000000;
+  --airbnb-white: #FFFFFF;
+}
+/* 
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -15,6 +58,9 @@ body {
     transparent,
     rgb(var(--background-end-rgb))
   );
+  font-family: 'Cereal', sans-serif;
+  color: var(--airbnb-dark);
+  background-color: var(--airbnb-white);
 }
 
 /* Add this to ensure proper stacking */
@@ -54,4 +100,3 @@ section {
     transform: translateX(-50%);
   }
 }
-

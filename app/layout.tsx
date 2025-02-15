@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable}`}> {/* This will add the variable to your document */}
+    <html lang="en" className="font-cereal"> {/* This will add the variable to your document */}
       <body>{children}</body>
       <Script src="https://scripts.simpleanalyticscdn.com/latest.js"  />
     </html>

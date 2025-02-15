@@ -126,7 +126,7 @@ export default function Contact() {
                 whileTap={{ scale: 0.95 }}
                 type="submit"
                 disabled={formStatus === "sending"}
-                className="w-full bg-fb-blue hover:bg-fb-blue-light text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                className="bg-fb-blue hover:bg-fb-blue-light text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 {formStatus === "sending"
                   ? "Sending..."

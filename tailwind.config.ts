@@ -8,14 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'fb': {
-          blue: '#4267B2',
-          'blue-light': '#5b7bc3',
-          grey: '#898F9C',
-          'grey-light': '#a0a4af',
+        airbnb: {
+          red: '#FF385C',
+          dark: '#222222',
+          light: '#717171',
+          grey: '#DDDDDD',
           black: '#000000',
-        }
-      }
+          white: '#FFFFFF',
+        },
+      },
+      fontFamily: {
+        cereal: ['Cereal', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -17,17 +17,17 @@ export default function Navbar() {
   return (
     <motion.nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
           <motion.a 
             href="#"
-            className="text-xl font-bold text-fb-blue"
+            className="text-2xl font-bold text-[#FF385C]"
             whileHover={{ scale: 1.05 }}
           >
             MRH
@@ -38,8 +38,11 @@ export default function Navbar() {
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-fb-grey hover:text-fb-blue transition-colors"
-                whileHover={{ scale: 1.1 }}
+                className="text-[#222222] hover:text-[#FF385C] font-medium transition-colors"
+                whileHover={{ 
+                  scale: 1.05,
+                  color: '#FF385C'
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 {item}

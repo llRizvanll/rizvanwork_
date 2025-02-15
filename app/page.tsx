@@ -11,6 +11,7 @@ import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import { useEffect } from 'react'
 import CompanyLogos from './components/CompanyLogos'
+import GitHubRepos from './components/GitHubRepos'
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -32,20 +33,12 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="relative">
-      {/* Progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-fb-blue transform-origin-left z-50"
-        style={{ scaleX: scrollYProgress }}
-      />
-      
+    <main className="bg-airbnb-white min-h-screen">
       <Navbar />
-      
+      <Hero />
+      <GitHubRepos />
       <div className="relative">
         <section className="relative z-10">
-          <Hero />
-        </section>
-        <section className="relative z-20">
           <About />
         </section>
         <section className="relative z-20">
