@@ -52,7 +52,7 @@ const CompanyLogos: React.FC = () => {
       name: "NCR",
       logo: "/images/companies/ncr.jpg",
       alt: "NCR USA Logo",
-      year: "2024-2025",
+      year: "-",
       location: "Remote, USA",
     },
     {
