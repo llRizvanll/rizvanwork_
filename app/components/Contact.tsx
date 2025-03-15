@@ -1,10 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useState } from "react";
 import Section from "./Section";
+import Typewriter from 'typewriter-effect';
 import { trackEvent } from '../GoogleAnalytics';
+import { useTheme } from '../context/ThemeContext';
 
 export interface SocialLink {
   name: string;
@@ -12,6 +13,7 @@ export interface SocialLink {
   icon: string;
   color: string;
   hoverBg: string;
+  command: string;
 }
 
 const socialLinks: SocialLink[] = [
@@ -19,250 +21,366 @@ const socialLinks: SocialLink[] = [
     name: "LinkedIn",
     url: "https://linkedin.com/in/rizvanhawaldar",
     icon: "🔗",
-    color: "#0077B5",
-    hoverBg: "#E7F3F9",
+    color: "text-blue-500",
+    hoverBg: "hover:bg-blue-100",
+    command: "linkedin --open"
   },
   {
     name: "GitHub",
-    url: "https://github.com/llrizvanll",
-    icon: "💻",
-    color: "#333333",
-    hoverBg: "#F0F0F0",
+    url: "https://github.com/llRizvanll",
+    icon: "👨‍💻",
+    color: "text-gray-700",
+    hoverBg: "hover:bg-gray-100",
+    command: "github --profile"
   },
   {
     name: "Twitter",
-    url: "https://twitter.com/rizvanhawaldar",
+    url: "https://twitter.com/llrizvanll",
     icon: "🐦",
-    color: "#1DA1F2",
-    hoverBg: "#E8F5FE",
+    color: "text-blue-400",
+    hoverBg: "hover:bg-blue-50",
+    command: "twitter --connect"
   },
   {
     name: "Email",
-    url: "mailto:rizvan.g.h@gmail.com",
-    icon: "📧",
-    color: "#EA4335",
-    hoverBg: "#FCE8E6",
-  },
+    url: "mailto:inbox.rizvan@gmail.com",
+    icon: "✉️",
+    color: "text-red-500",
+    hoverBg: "hover:bg-red-50",
+    command: "mail --send"
+  }
 ];
 
-interface SocialLinkItemProps {
-  link: SocialLink;
-  delay: number;
-}
-
-const SocialLinkItem: React.FC<SocialLinkItemProps> = ({ link, delay }) => {
-  return (
-    <motion.a
-      href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-    >
-      <motion.div
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-white border-2 border-airbnb-grey transition-all duration-300"
-        whileHover={{
-          scale: 1.1,
-          backgroundColor: link.hoverBg,
-          borderColor: link.color,
-        }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <span className="text-2xl">{link.icon}</span>
-      </motion.div>
-      <motion.span
-        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm text-airbnb-light opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      >
-        {link.name}
-      </motion.span>
-    </motion.a>
-  );
-};
-
 const Contact: React.FC = () => {
-  const [formStatus, setFormStatus] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
+  const { theme } = useTheme();
+  const isHackerTheme = theme === 'hacker';
+  const [loaded, setLoaded] = useState(false);
+  const [showContact, setShowContact] = useState(false);
+  const [showSocial, setShowSocial] = useState(false);
+  const [formName, setFormName] = useState('');
+  const [formEmail, setFormEmail] = useState('');
+  const [formMessage, setFormMessage] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus("sending");
-
-    try {
-      const formData = new FormData(e.currentTarget);
-      const name = formData.get("name") as string;
-      const email = formData.get("email") as string;
-      const message = formData.get("message") as string;
-
-      const subject = `New Message from ${name}`;
-      // Create the email body with name, email, and message, each on its own line
-      const body = `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`;
-
-      // Open the default email client with pre-filled mailto link
-      window.location.href = `mailto:rizvan.g.h@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
-
-      setFormStatus("sent");
+  useEffect(() => {
+    // Only use loading animation in hacker theme
+    if (isHackerTheme) {
+      const timer1 = setTimeout(() => setLoaded(true), 800);
+      const timer2 = setTimeout(() => setShowContact(true), 1500);
+      const timer3 = setTimeout(() => setShowSocial(true), 2200);
       
-        trackEvent(
-          'click',
-          'contact',
-          'send_message_button'
-        );
-      
-    } catch (error) {
-      setFormStatus("error");
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    } else {
+      // Immediately show content in default theme
+      setLoaded(true);
+      setShowContact(true);
+      setShowSocial(true);
     }
+  }, [isHackerTheme]);
+
+  // Reset state when theme changes
+  useEffect(() => {
+    setFormSubmitted(false);
+  }, [theme]);
+
+  const handleSocialClick = (name: string) => {
+    trackEvent('click', 'contact', `social_${name.toLowerCase()}`);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic here
+    setFormSubmitted(true);
+    trackEvent('submit', 'contact', 'contact_form');
   };
 
   return (
-    <Section id="contact" className="bg-gradient-to-b from-fb-blue/5 to-white">
-      <div className="max-w-7xl mx-auto px-4 py-20">
+    <Section className={isHackerTheme ? "bg-black relative overflow-hidden" : ""}>
+      {isHackerTheme && (
+        <>
+          <div className="absolute inset-0 matrix-rain"></div>
+          <div className="absolute inset-0 grid-pattern"></div>
+        </>
+      )}
+      
+      <div className={`max-w-6xl mx-auto px-4 ${isHackerTheme ? "relative z-10" : ""}`}>
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4 text-fb-black">
-            Let's Connect
+          <h2 className={`text-3xl font-bold mb-4 ${
+            isHackerTheme ? "text-green-400 font-mono glitch-text" : "text-fb-black"
+          }`}>
+            {isHackerTheme ? "$ establish_connection" : "Get In Touch"}
           </h2>
-          <p className="text-fb-grey">
-            Have a project in mind? Let's talk about it.
-          </p>
+          <div className={`w-20 h-1 mx-auto ${
+            isHackerTheme ? "bg-green-500" : "bg-fb-blue"
+          }`}></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-fb-black mb-2"
-                >
-                  Name
-                </label>
-                <motion.input
-                  whileFocus={{ scale: 1.01 }}
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 bg-white border border-fb-grey/20 rounded-lg focus:ring-2 focus:ring-fb-blue focus:outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-fb-black mb-2"
-                >
-                  Email
-                </label>
-                <motion.input
-                  whileFocus={{ scale: 1.01 }}
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                  title="Please enter a valid email address"
-                  className="w-full px-4 py-3 bg-white border border-fb-grey/20 rounded-lg focus:ring-2 focus:ring-fb-blue focus:outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-fb-black mb-2"
-                >
-                  Message
-                </label>
-                <motion.textarea
-                  whileFocus={{ scale: 1.01 }}
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  className="w-full px-4 py-3 bg-white border border-fb-grey/20 rounded-lg focus:ring-2 focus:ring-fb-blue focus:outline-none transition-all"
-                />
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="submit"
-                disabled={formStatus === "sending"}
-                className="w-full bg-fb-blue hover:bg-fb-blue-light text-white font-medium py-3 px-6 rounded-lg transition-colors"
-              >
-                {formStatus === "sending"
-                  ? "Sending..."
-                  : formStatus === "sent"
-                  ? "Message Sent!"
-                  : formStatus === "error"
-                  ? "Error! Try Again"
-                  : "Send Message"}
-              </motion.button>
-            </form>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-fb-black">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                <p className="flex items-center space-x-3 text-fb-grey">
-                  <span className="text-fb-blue">📍</span>
-                  <span>
-                    Krishnageet Shelters Apartment, Bangalore-560016, India
-                  </span>
-                </p>
-                <p className="flex items-center space-x-3">
-                  <span className="text-fb-blue">📧</span>
-                  <a
-                    href="mailto:rizvan.g.h@gmail.com"
-                    className="text-fb-grey hover:text-fb-blue transition-colors"
-                  >
-                    rizvan.g.h@gmail.com
-                  </a>
-                </p>
-                <p className="flex items-center space-x-3 text-fb-grey">
-                  <span className="text-fb-blue">📱</span>
-                  <span>+91-9538943603</span>
-                </p>
-              </div>
+        {!loaded && isHackerTheme ? (
+          <div className="font-mono text-green-400 space-y-2 text-center">
+            <p>$ /bin/init_comms</p>
+            <p className="text-green-300/70">Establishing secure connection...</p>
+            <div className="loading-dots flex justify-center space-x-2 mt-4">
+              <span className="h-3 w-3 bg-green-500 rounded-full animate-pulse"></span>
+              <span className="h-3 w-3 bg-green-500 rounded-full animate-pulse delay-100"></span>
+              <span className="h-3 w-3 bg-green-500 rounded-full animate-pulse delay-200"></span>
             </div>
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-fb-black">
-                  Follow Me
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: showContact ? 1 : 0, x: showContact ? 0 : -50 }}
+              transition={{ duration: 0.6 }}
+              className={isHackerTheme ? "relative" : ""}
+            >
+              {isHackerTheme && (
+                <div className="absolute -left-5 -top-5 w-full h-full border border-green-500/30"></div>
+              )}
+
+              <div className={`${isHackerTheme ? "p-5 bg-black/80 border border-green-500/30" : ""}`}>
+                <h3 className={`text-xl font-semibold mb-6 ${
+                  isHackerTheme ? "text-green-400 font-mono" : "text-fb-black"
+                }`}>
+                  {isHackerTheme ? "$ send_message.sh" : "Send a Message"}
                 </h3>
-                <div className="flex space-x-4">
-                  {socialLinks.map((link, index) => (
-                    <SocialLinkItem key={link.name} link={link} delay={index * 0.1} />
+
+                {formSubmitted ? (
+                  <div className={`p-6 rounded-lg ${
+                    isHackerTheme 
+                      ? "bg-green-900/20 border border-green-500/30" 
+                      : "bg-green-50 border-l-4 border-green-500"
+                  }`}>
+                    <p className={isHackerTheme ? "text-green-400 font-mono" : "text-green-700"}>
+                      {isHackerTheme 
+                        ? "Message transmitted successfully. Awaiting response..." 
+                        : "Your message has been sent! I'll get back to you as soon as possible."}
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="space-y-6">
+                    <div>
+                      <label 
+                        htmlFor="name" 
+                        className={`block text-sm font-medium mb-2 ${
+                          isHackerTheme ? "text-green-400 font-mono" : "text-gray-700"
+                        }`}
+                      >
+                        {isHackerTheme ? "$ user.name" : "Name"}
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        required
+                        className={`w-full p-3 rounded-lg ${
+                          isHackerTheme 
+                            ? "bg-black text-green-400 border border-green-500/30 focus:border-green-400 font-mono" 
+                            : "border border-gray-300 focus:border-fb-blue focus:ring-fb-blue text-gray-900"
+                        } transition-colors`}
+                        value={formName}
+                        onChange={(e) => setFormName(e.target.value)}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className={`block text-sm font-medium mb-2 ${
+                          isHackerTheme ? "text-green-400 font-mono" : "text-gray-700"
+                        }`}
+                      >
+                        {isHackerTheme ? "$ user.email" : "Email"}
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        required
+                        className={`w-full p-3 rounded-lg ${
+                          isHackerTheme 
+                            ? "bg-black text-green-400 border border-green-500/30 focus:border-green-400 font-mono" 
+                            : "border border-gray-300 focus:border-fb-blue focus:ring-fb-blue text-gray-900"
+                        } transition-colors`}
+                        value={formEmail}
+                        onChange={(e) => setFormEmail(e.target.value)}
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className={`block text-sm font-medium mb-2 ${
+                          isHackerTheme ? "text-green-400 font-mono" : "text-gray-700"
+                        }`}
+                      >
+                        {isHackerTheme ? "$ message.payload" : "Message"}
+                      </label>
+                      <textarea
+                        id="message"
+                        required
+                        rows={4}
+                        className={`w-full p-3 rounded-lg ${
+                          isHackerTheme 
+                            ? "bg-black text-green-400 border border-green-500/30 focus:border-green-400 font-mono" 
+                            : "border border-gray-300 focus:border-fb-blue focus:ring-fb-blue text-gray-900"
+                        } transition-colors`}
+                        value={formMessage}
+                        onChange={(e) => setFormMessage(e.target.value)}
+                      ></textarea>
+                    </div>
+
+                    <motion.button
+                      whileHover={{ 
+                        scale: 1.02,
+                        boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)" 
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      type="submit"
+                      disabled={formSubmitted}
+                      className={`w-full bg-green-900/30 hover:bg-green-800/40 text-green-400 font-medium py-3 px-6 rounded-md transition-colors border border-green-500 font-mono ${
+                        isHackerTheme ? "mt-4" : ""
+                      }`}
+                    >
+                      {formSubmitted ? "$ transmitting..." : "$ execute_transmission"}
+                      <span className="ml-1 animate-pulse">▌</span>
+                    </motion.button>
+                  </form>
+                )}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: showSocial ? 1 : 0, x: showSocial ? 0 : 50 }}
+              transition={{ duration: 0.6 }}
+              className={isHackerTheme ? "relative" : ""}
+            >
+              {isHackerTheme && (
+                <div className="absolute -right-5 -top-5 w-full h-full border border-green-500/30"></div>
+              )}
+
+              <div className={`${isHackerTheme ? "p-5 bg-black/80 border border-green-500/30" : ""}`}>
+                <h3 className={`text-xl font-semibold mb-6 ${
+                  isHackerTheme ? "text-green-400 font-mono" : "text-fb-black"
+                }`}>
+                  {isHackerTheme ? "$ connect --social" : "Connect With Me"}
+                </h3>
+                
+                <div className="space-y-4">
+                  {socialLinks.map((link) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center p-4 rounded-lg transition-all ${
+                        isHackerTheme 
+                          ? "border border-green-500/30 hover:border-green-400 bg-black/60" 
+                          : `${link.hoverBg} hover:shadow-md`
+                      }`}
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleSocialClick(link.name)}
+                    >
+                      <span className="text-2xl mr-4">{link.icon}</span>
+                      <div>
+                        <h4 className={isHackerTheme ? "text-green-400 font-mono" : link.color}>
+                          {link.name}
+                        </h4>
+                        {isHackerTheme && (
+                          <p className="text-green-300/70 text-sm font-mono">
+                            $ {link.command}
+                          </p>
+                        )}
+                      </div>
+                      {isHackerTheme && (
+                        <span className="ml-auto text-green-400 font-mono text-sm">↵</span>
+                      )}
+                    </motion.a>
                   ))}
                 </div>
+
+                {isHackerTheme && (
+                  <div className="mt-8 p-4 border border-green-500/30 rounded-lg bg-black/60">
+                    <p className="text-green-400 font-mono text-sm">
+                      $ echo $LOCATION<br/>
+                      <span className="text-green-300/80">"Bangalore, India 🇮🇳"</span>
+                    </p>
+                  </div>
+                )}
               </div>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
+        )}
       </div>
+      
+      {/* CSS for effects - only applied in hacker theme */}
+      {isHackerTheme && (
+        <style jsx>{`
+          .matrix-rain {
+            background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,255,0,0.05) 100%);
+            background-size: 100% 100%;
+            animation: rain 5s linear infinite;
+          }
+          
+          .grid-pattern {
+            background-image: 
+              linear-gradient(to right, rgba(0,255,0,0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,255,0,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+          
+          @keyframes rain {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+          }
+          
+          .glitch-text {
+            position: relative;
+          }
+          
+          .glitch-text::before {
+            content: '$ establish_connection';
+            position: absolute;
+            left: -2px;
+            text-shadow: 2px 0 #00ff00;
+            top: 0;
+            color: #00ff00;
+            background: black;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+          }
+          
+          @keyframes glitch-anim {
+            0% {
+              clip: rect(0, 900px, 5px, 0);
+            }
+            20% {
+              clip: rect(0, 900px, 5px, 0);
+            }
+            21% {
+              clip: rect(0, 900px, 0, 0);
+            }
+            49% {
+              clip: rect(0, 900px, 0, 0);
+            }
+            50% {
+              clip: rect(0, 900px, 5px, 0);
+            }
+            100% {
+              clip: rect(0, 900px, 0, 0);
+            }
+          }
+        `}</style>
+      )}
     </Section>
   );
 };

@@ -7,20 +7,19 @@ interface KeyPointProps {
   title: string;
   description: string;
   icon: string;
+  className?: string;
 }
 
-const KeyPoint: React.FC<KeyPointProps> = ({ title, description, icon }) => {
+const KeyPoint: React.FC<KeyPointProps> = ({ title, description, icon, className = '' }) => {
   return (
-    <motion.div
-      className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-fb-grey/10"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
+    <motion.div 
+      className={`flex items-start p-4 rounded-lg ${className}`}
+      whileHover={{ scale: 1.02 }}
     >
-      <span className="text-2xl">{icon}</span>
+      <div className="text-2xl mr-4 flex-shrink-0">{icon}</div>
       <div>
-        <h4 className="text-lg font-semibold text-fb-blue">{title}</h4>
-        <p className="text-fb-grey text-sm">{description}</p>
+        <h4 className="text-lg font-mono mb-1">{title}</h4>
+        <p className="text-green-300/80 text-sm">{description}</p>
       </div>
     </motion.div>
   );
