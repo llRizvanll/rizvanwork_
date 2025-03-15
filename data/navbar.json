@@ -1,0 +1,11 @@
+{
+  "brand": "MRH",
+  "navItems": [
+    "About",
+    "Experience",
+    "Skills",
+    "Projects",
+    "Contact"
+  ],
+  "mobileMenuDelay": 300
+} 

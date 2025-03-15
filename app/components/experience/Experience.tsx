@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "../Section";
 import { useState, useEffect } from "react";
-import experienceData from "../../data/experience.json";
+import experienceData from "@/data/experience.json";
 
 export default function Experience() {
   const [filter, setFilter] = useState("all");

@@ -3,46 +3,22 @@
 import { motion } from "framer-motion";
 import Section from "./Section";
 import { FaStar, FaStarHalf, FaRegStar } from "react-icons/fa";
+import skillsData from "@/data/skills.json";
 
 interface Skill {
   name: string;
-  level: number; // Now represents rating out of 5
+  level: number; // Represents rating out of 5
   icon?: string;
 }
 
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: "Mobile Development",
-      icon: "📱",
-      skills: [
-        { name: "Kotlin", level: 4.5 },
-        { name: "Java", level: 5 },
-        { name: "React Native", level: 4 },
-        { name: "iOS Development", level: 4 }
-      ]
-    },
-    {
-      title: "Frontend",
-      icon: "🎨",
-      skills: [
-        { name: "React.js", level: 4.5 },
-        { name: "TypeScript", level: 4.5 },
-        { name: "JavaScript", level: 5 },
-        { name: "HTML/CSS", level: 4.5 }
-      ]
-    },
-    {
-      title: "Backend & DevOps",
-      icon: "⚙️",
-      skills: [
-        { name: "Node.js", level: 4 },
-        { name: "CI/CD", level: 4 },
-        { name: "Python", level: 3.5 },
-        { name: "Cloud Services", level: 4 }
-      ]
-    }
-  ];
+  const { 
+    heading, 
+    subheading, 
+    skillCategories, 
+    additionalExpertiseHeading, 
+    additionalExpertise 
+  } = skillsData;
 
   const renderStars = (rating: number) => {
     const stars = [];
@@ -107,9 +83,9 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-fb-black mb-4">Technical Skills</h2>
+          <h2 className="text-4xl font-bold text-fb-black mb-4">{heading}</h2>
           <p className="text-fb-grey max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise across different technologies and platforms.
+            {subheading}
           </p>
         </motion.div>
 
@@ -162,14 +138,10 @@ export default function Skills() {
           className="mt-16"
         >
           <h3 className="text-2xl font-semibold text-center text-fb-black mb-8">
-            Additional Expertise
+            {additionalExpertiseHeading}
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "Git", "Jenkins", "Firebase", "Redux", "GraphQL", "REST APIs",
-              "Unit Testing", "Agile", "Scrum", "Team Leadership", "Jest", "Performance improvements","Migration native to react native",
-              "Migration react native to native","OneSignal", "Huewai apps management","Push Notifications","Github actions","fastlane","gradle"
-            ].map((skill) => (
+            {additionalExpertise.map((skill) => (
               <motion.span
                 key={skill}
                 whileHover={{ scale: 1.1 }}

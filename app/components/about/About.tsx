@@ -5,32 +5,10 @@ import Section from '../Section';
 import ProfileImage from './ProfileImage';
 import KeyPoint from './KeyPoint';
 import StatCard from './StatCard';
+import aboutData from '@/data/about.json';
 
 const About: React.FC = () => {
-  const stats = [
-    { label: "Years Experience", value: "12+" },
-    { label: "Projects Completed", value: "10+" },
-    { label: "Companies Worked", value: "7+" },
-    { label: "Mobile Apps", value: "10+" },
-  ];
-
-  const keyPoints = [
-    {
-      title: "Mobile Development Specialist",
-      description: "Specialized in Native and React Native mobile applications with a focus on performance and user experience.",
-      icon: "📱",
-    },
-    {
-      title: "Full Stack Developer",
-      description: "Experienced in both frontend and backend development, creating comprehensive solutions.",
-      icon: "💻",
-    },
-    {
-      title: "Mobile DevOps Engineer",
-      description: "Mobile with cloud integrated build pipeline management solution engineer.",
-      icon: "📱",
-    },
-  ];
+  const { stats, keyPoints } = aboutData;
 
   return (
     <Section id="about" className="bg-gradient-to-b from-fb-blue/5 to-white">

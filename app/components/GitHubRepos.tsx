@@ -2,33 +2,15 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const repositories = [
-  {
-    name: "CliqApp",
-    description: "An e-commerce app built with React Native that runs on Android & iOS.",
-    stars: 111,
-    url: "https://github.com/llRizvanll/CliqApp",
-  },
-  {
-    name: "RN-Scalable-Rental-App",
-    description: "A sample app showcasing clean architecture and scalability with solid principles.",
-    stars: 40,
-    url: "https://github.com/llRizvanll/RN-Scalable-Rental-App",
-  },
-  {
-    name: "InshortApp",
-    description: "Demo app similar to Inshorts.",
-    stars: 28,
-    url: "https://github.com/llRizvanll/InshortApp",
-  },
-];
+import repoData from '@/data/githubrepo.json';
 
 const GitHubRepos: React.FC = () => {
+  const { heading, repositories } = repoData;
+  
   return (
     <section className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">My Top GitHub Repositories</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">{heading}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {repositories.map((repo) => (
             <motion.div

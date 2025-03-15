@@ -1,0 +1,50 @@
+{
+  "heading": "Let's Connect",
+  "subheading": "Have a project in mind? Let's talk about it.",
+  "socialLinks": [
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/rizvanhawaldar",
+      "icon": "🔗",
+      "color": "#0077B5",
+      "hoverBg": "#E7F3F9"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/llrizvanll",
+      "icon": "💻",
+      "color": "#333333",
+      "hoverBg": "#F0F0F0"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/rizvanhawaldar",
+      "icon": "🐦",
+      "color": "#1DA1F2",
+      "hoverBg": "#E8F5FE"
+    },
+    {
+      "name": "Email",
+      "url": "mailto:rizvan.g.h@gmail.com",
+      "icon": "📧",
+      "color": "#EA4335",
+      "hoverBg": "#FCE8E6"
+    }
+  ],
+  "contactInfo": {
+    "heading": "Contact Information",
+    "address": "Krishnageet Shelters Apartment, Bangalore-560016, India",
+    "email": "rizvan.g.h@gmail.com",
+    "phone": "+91-9538943603"
+  },
+  "formLabels": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "sent": "Message Sent!",
+    "error": "Error! Try Again"
+  },
+  "socialHeading": "Follow Me"
+} 

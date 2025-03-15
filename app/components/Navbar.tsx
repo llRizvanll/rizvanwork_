@@ -2,10 +2,13 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import navbarData from '@/data/navbar.json'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
+  const { brand, navItems, mobileMenuDelay } = navbarData
   
   useEffect(() => {
     const handleScroll = () => {
@@ -33,11 +36,9 @@ export default function Navbar() {
       // Add a small delay before scrolling to make sure mobile menu animation completes
       setTimeout(() => {
         targetElement.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+      }, mobileMenuDelay);
     }
   }
-
-  const navItems = ['About', 'Experience', 'Skills', 'Projects', 'Contact']
 
   return (
     <motion.nav
@@ -55,7 +56,7 @@ export default function Navbar() {
             className="text-xl font-bold text-fb-blue"
             whileHover={{ scale: 1.05 }}
           >
-            MRH
+            {brand}
           </motion.a>
           
           {/* Desktop Navigation */}

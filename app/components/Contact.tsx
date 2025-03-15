@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useState } from "react";
 import Section from "./Section";
 import { trackEvent } from '../GoogleAnalytics';
+import contactData from '@/data/contact.json';
 
 export interface SocialLink {
   name: string;
@@ -13,37 +14,6 @@ export interface SocialLink {
   color: string;
   hoverBg: string;
 }
-
-const socialLinks: SocialLink[] = [
-  {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/rizvanhawaldar",
-    icon: "🔗",
-    color: "#0077B5",
-    hoverBg: "#E7F3F9",
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/llrizvanll",
-    icon: "💻",
-    color: "#333333",
-    hoverBg: "#F0F0F0",
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/rizvanhawaldar",
-    icon: "🐦",
-    color: "#1DA1F2",
-    hoverBg: "#E8F5FE",
-  },
-  {
-    name: "Email",
-    url: "mailto:rizvan.g.h@gmail.com",
-    icon: "📧",
-    color: "#EA4335",
-    hoverBg: "#FCE8E6",
-  },
-];
 
 interface SocialLinkItemProps {
   link: SocialLink;
@@ -85,6 +55,15 @@ const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "sent" | "error"
   >("idle");
+  
+  const { 
+    heading, 
+    subheading, 
+    socialLinks, 
+    contactInfo, 
+    formLabels,
+    socialHeading 
+  } = contactData;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,17 +80,17 @@ const Contact: React.FC = () => {
       const body = `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`;
 
       // Open the default email client with pre-filled mailto link
-      window.location.href = `mailto:rizvan.g.h@gmail.com?subject=${encodeURIComponent(
+      window.location.href = `mailto:${contactInfo.email}?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
 
       setFormStatus("sent");
       
-        trackEvent(
-          'click',
-          'contact',
-          'send_message_button'
-        );
+      trackEvent(
+        'click',
+        'contact',
+        'send_message_button'
+      );
       
     } catch (error) {
       setFormStatus("error");
@@ -128,10 +107,10 @@ const Contact: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold mb-4 text-fb-black">
-            Let's Connect
+            {heading}
           </h2>
           <p className="text-fb-grey">
-            Have a project in mind? Let's talk about it.
+            {subheading}
           </p>
         </motion.div>
 
@@ -148,7 +127,7 @@ const Contact: React.FC = () => {
                   htmlFor="name"
                   className="block text-sm font-medium text-fb-black mb-2"
                 >
-                  Name
+                  {formLabels.name}
                 </label>
                 <motion.input
                   whileFocus={{ scale: 1.01 }}
@@ -165,7 +144,7 @@ const Contact: React.FC = () => {
                   htmlFor="email"
                   className="block text-sm font-medium text-fb-black mb-2"
                 >
-                  Email
+                  {formLabels.email}
                 </label>
                 <motion.input
                   whileFocus={{ scale: 1.01 }}
@@ -184,7 +163,7 @@ const Contact: React.FC = () => {
                   htmlFor="message"
                   className="block text-sm font-medium text-fb-black mb-2"
                 >
-                  Message
+                  {formLabels.message}
                 </label>
                 <motion.textarea
                   whileFocus={{ scale: 1.01 }}
@@ -204,12 +183,12 @@ const Contact: React.FC = () => {
                 className="w-full bg-fb-blue hover:bg-fb-blue-light text-white font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 {formStatus === "sending"
-                  ? "Sending..."
+                  ? formLabels.sending
                   : formStatus === "sent"
-                  ? "Message Sent!"
+                  ? formLabels.sent
                   : formStatus === "error"
-                  ? "Error! Try Again"
-                  : "Send Message"}
+                  ? formLabels.error
+                  : formLabels.submit}
               </motion.button>
             </form>
           </motion.div>
@@ -223,27 +202,25 @@ const Contact: React.FC = () => {
           >
             <div>
               <h3 className="text-xl font-semibold mb-4 text-fb-black">
-                Contact Information
+                {contactInfo.heading}
               </h3>
               <div className="space-y-4">
                 <p className="flex items-center space-x-3 text-fb-grey">
                   <span className="text-fb-blue">📍</span>
-                  <span>
-                    Krishnageet Shelters Apartment, Bangalore-560016, India
-                  </span>
+                  <span>{contactInfo.address}</span>
                 </p>
                 <p className="flex items-center space-x-3">
                   <span className="text-fb-blue">📧</span>
                   <a
-                    href="mailto:rizvan.g.h@gmail.com"
+                    href={`mailto:${contactInfo.email}`}
                     className="text-fb-grey hover:text-fb-blue transition-colors"
                   >
-                    rizvan.g.h@gmail.com
+                    {contactInfo.email}
                   </a>
                 </p>
                 <p className="flex items-center space-x-3 text-fb-grey">
                   <span className="text-fb-blue">📱</span>
-                  <span>+91-9538943603</span>
+                  <span>{contactInfo.phone}</span>
                 </p>
               </div>
             </div>
@@ -251,7 +228,7 @@ const Contact: React.FC = () => {
             <div className="flex space-x-4">
               <div>
                 <h3 className="text-xl font-semibold mb-4 text-fb-black">
-                  Follow Me
+                  {socialHeading}
                 </h3>
                 <div className="flex space-x-4">
                   {socialLinks.map((link, index) => (

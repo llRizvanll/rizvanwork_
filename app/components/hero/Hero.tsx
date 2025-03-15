@@ -7,7 +7,7 @@ import ProfileImage from "./ProfileImage";
 import ScrollIndicator from "./ScrollIndicator";
 import { trackEvent } from "../../GoogleAnalytics";
 import TechSkills from "./TechSkills";
-import heroData from "../../data/hero.json";
+import heroData from "@/data/hero.json";
 
 export default function Hero() {
   const { techSkills } = heroData;

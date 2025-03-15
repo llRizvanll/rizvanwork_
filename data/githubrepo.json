@@ -1,0 +1,23 @@
+{
+  "heading": "My Top GitHub Repositories",
+  "repositories": [
+    {
+      "name": "CliqApp",
+      "description": "An e-commerce app built with React Native that runs on Android & iOS.",
+      "stars": 111,
+      "url": "https://github.com/llRizvanll/CliqApp"
+    },
+    {
+      "name": "RN-Scalable-Rental-App",
+      "description": "A sample app showcasing clean architecture and scalability with solid principles.",
+      "stars": 40,
+      "url": "https://github.com/llRizvanll/RN-Scalable-Rental-App"
+    },
+    {
+      "name": "InshortApp",
+      "description": "Demo app similar to Inshorts.",
+      "stars": 28,
+      "url": "https://github.com/llRizvanll/InshortApp"
+    }
+  ]
+} 

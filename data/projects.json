@@ -1,0 +1,61 @@
+{
+  "techSkills": [
+    { "name": "React Native", "logo": "/images/tech/rn_banner.png" },
+    { "name": "AI+ML", "logo": "/images/tech/ai_plus_banner.jpg" },
+    { "name": "Ts/Js", "logo": "/images/tech/jt_banner.webp" },
+    { "name": "Kotlin", "logo": "/images/tech/kt_banner.png" },
+    { "name": "Java", "logo": "/images/tech/jv_banner.png" },
+    { "name": "A-I", "logo": "/images/tech/ai_banner.webp" },
+    { "name": "Python", "logo": "/images/tech/py_banner.png" },
+    { "name": "Mobile DevOps", "logo": "/images/tech/md_banner.png" }
+  ],
+  "filters": ["Impact", "More"],
+  "heading": "Featured Projects",
+  "subheading": "A showcase of my best work, demonstrating my expertise in mobile and web development.",
+  "ctaText": "Interested in seeing more of my work?",
+  "githubButtonText": "Visit My GitHub",
+  "projects": [
+    {
+      "title": "Healthcare Mobile App",
+      "description": "React Native application for healthcare and insurance industry with real-time consultations.",
+      "tech": ["React Native", "TypeScript", "Redux", "Firebase", "Kotlin", "Ts/Js", "Mobile DevOps"],
+      "image": "/assets/images/companies/lh_banner.webp",
+      "link": "https://play.google.com/store/apps/details?id=com.invoqhealth.loophealth.patient&hl=en",
+      "category": "Mobile",
+      "key": "Impact",
+      "features": [
+        "Real-time doctor consultations",
+        "Insurance claim processing",
+        "Medical records management"
+      ]
+    },
+    {
+      "title": "AI Visualization Framework",
+      "description": "Framework for visualizing AI/ML data with interactive components.",
+      "tech": ["Python", "React Native", "D3.js", "TensorFlow", "Kotlin", "Ts/Js", "Mobile DevOps"],
+      "image": "/assets/images/companies/ai_ge.png",
+      "link": "https://bakerhughes.com",
+      "category": "Mobile/Web/AI",
+      "key": "Impact",
+      "features": [
+        "Interactive data visualization",
+        "Real-time analytics",
+        "Custom chart components"
+      ]
+    },
+    {
+      "title": "Logistics Platform",
+      "description": "Android application for fleet management and transport operations.",
+      "tech": ["Kotlin", "Android", "Google Maps API", "Firebase", "Ts/Js", "React Native", "iOS"],
+      "image": "/assets/images/companies/4tigo_banner.jpg",
+      "link": "https://www.xelpmoc.in/4tigo",
+      "category": "Mobile",
+      "key": "Impact",
+      "features": [
+        "Real-time tracking",
+        "Route optimization",
+        "Fleet management"
+      ]
+    }
+  ]
+} 

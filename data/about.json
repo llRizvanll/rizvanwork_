@@ -1,0 +1,25 @@
+{
+  "stats": [
+    { "label": "Years Experience", "value": "12+" },
+    { "label": "Projects Completed", "value": "10+" },
+    { "label": "Companies Worked", "value": "7+" },
+    { "label": "Mobile Apps", "value": "10+" }
+  ],
+  "keyPoints": [
+    {
+      "title": "Mobile Development Specialist",
+      "description": "Specialized in Native and React Native mobile applications with a focus on performance and user experience.",
+      "icon": "📱"
+    },
+    {
+      "title": "Full Stack Developer",
+      "description": "Experienced in both frontend and backend development, creating comprehensive solutions.",
+      "icon": "💻"
+    },
+    {
+      "title": "Mobile DevOps Engineer",
+      "description": "Mobile with cloud integrated build pipeline management solution engineer.",
+      "icon": "📱"
+    }
+  ]
+} 

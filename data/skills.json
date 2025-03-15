@@ -1,0 +1,43 @@
+{
+  "heading": "Technical Skills",
+  "subheading": "A comprehensive overview of my technical expertise across different technologies and platforms.",
+  "skillCategories": [
+    {
+      "title": "Mobile Development",
+      "icon": "📱",
+      "skills": [
+        { "name": "Kotlin", "level": 4.5 },
+        { "name": "Java", "level": 5 },
+        { "name": "React Native", "level": 4 },
+        { "name": "iOS Development", "level": 4 }
+      ]
+    },
+    {
+      "title": "Frontend",
+      "icon": "🎨",
+      "skills": [
+        { "name": "React.js", "level": 4.5 },
+        { "name": "TypeScript", "level": 4.5 },
+        { "name": "JavaScript", "level": 5 },
+        { "name": "HTML/CSS", "level": 4.5 }
+      ]
+    },
+    {
+      "title": "Backend & DevOps",
+      "icon": "⚙️",
+      "skills": [
+        { "name": "Node.js", "level": 4 },
+        { "name": "CI/CD", "level": 4 },
+        { "name": "Python", "level": 3.5 },
+        { "name": "Cloud Services", "level": 4 }
+      ]
+    }
+  ],
+  "additionalExpertiseHeading": "Additional Expertise",
+  "additionalExpertise": [
+    "Git", "Jenkins", "Firebase", "Redux", "GraphQL", "REST APIs",
+    "Unit Testing", "Agile", "Scrum", "Team Leadership", "Jest", "Performance improvements",
+    "Migration native to react native", "Migration react native to native", "OneSignal", 
+    "Huewai apps management", "Push Notifications", "Github actions", "fastlane", "gradle"
+  ]
+} 

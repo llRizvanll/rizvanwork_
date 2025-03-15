@@ -3,59 +3,10 @@
 import { motion } from 'framer-motion';
 import Section from '../Section';
 import CourseCard from './CourseCard';
+import educationData from '@/data/education.json';
 
 const Education: React.FC = () => {
-  const education = [
-    {
-      degree: "M.Tech - Master's Degree in Computing Systems and Infrastructure",
-      school: "Birla Institute of Technology & Science, Pilani",
-      year: "2018 - 2020",
-      icon: "🎓",
-      description: "Focused on advanced computing systems and infrastructure management"
-    },
-    {
-      degree: "B.E - Bachelor's Degree in Computer Science Engineering",
-      school: "Visvesvaraya Technological University (VTU)",
-      year: "2007 - 2011",
-      icon: "🎓",
-      description: "Core computer science fundamentals and engineering principles"
-    }
-  ];
-
-  const courses = [
-    {
-      name: "Kotlin for Java developers by Jetbrains",
-      period: "May 2020 — Jun 2020",
-      provider: "Coursera/kotlin.org",
-      icon: "⚡",
-      certificate: "https://www.coursera.org/account/accomplishments/verify/PJTTHNLZQ5KS?utm_campaign=copybutton_certificate&utm_medium=certificate&utm_source=link", // Add your certificate link
-      description: "Advanced Kotlin programming and Android development"
-    },
-    {
-      name: "Deep Learning Nanodegree Foundation Course",
-      period: "Jun 2017 — Oct 2017",
-      provider: "Udacity.com",
-      icon: "🧠",
-      certificate: "https://drive.google.com/file/d/0B4R0clK0nq8GOVJXejlkaHlhRVE/view?resourcekey=0-VaTH9zueUISSjRNE7XeFnw",
-      description: "Neural networks and deep learning fundamentals"
-    },
-    {
-      name: "C3 Advanced Application Development by C3.ai",
-      period: "Mar 2020 — Mar 2020",
-      provider: "Coursera/C3.ai",
-      icon: "💻",
-      certificate: "https://www.coursera.org/account/accomplishments/verify/QPS5FRKYFRXZ?utm_campaign=copybutton_certificate&utm_medium=certificate&utm_source=link",
-      description: "Enterprise-scale application development"
-    },
-    {
-      name: "Become a React Native Developer",
-      period: "May 2020 — Sep 2020",
-      provider: "Linkedin Learning",
-      icon: "📱",
-      certificate: "https://www.linkedin.com/learning/certificates/0eac55e29fa7aefb745ed0c5fcf86c5c7956b69cc0567eeb42e5adbf2c4b54de?trk=backfilled_certificate",
-      description: "Cross-platform mobile app development"
-    }
-  ];
+  const { education, courses } = educationData;
 
   return (
     <Section id="education" className="bg-gradient-to-b from-white to-fb-blue/5">
