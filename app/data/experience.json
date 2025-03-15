@@ -1,0 +1,108 @@
+{
+  "title": "Professional Experience",
+  "subtitle": "Over 10 years developing innovative mobile solutions and leading engineering teams",
+  "experiences": [
+    {
+      "role": "Software Engineer III",
+      "company": "Loop Health",
+      "period": "August 2022 - November 2024",
+      "location": "Bangalore, India",
+      "description": [
+        "Leading the development of Native and React Native mobile applications for healthcare and insurance industry",
+        "Implementing real-time consultation features and insurance claim processing",
+        "Collaborating with Product Managers and stakeholders to enhance mobile app functionality",
+        "Mentoring junior developers and conducting code reviews"
+      ],
+      "tech": ["React Native", "Android", "iOS", "TypeScript", "Redux"]
+    },
+    {
+      "role": "Staff Software Engineer",
+      "company": "Baker Hughes",
+      "period": "Jun 2017 - August 2022",
+      "location": "Bangalore, India",
+      "description": [
+        "Led AI Visualization Framework development and Business Intelligence mobile apps",
+        "Architected and implemented cross-platform mobile solutions",
+        "Managed team of 5 developers and coordinated with global stakeholders",
+        "Improved app performance by 40% through optimization techniques"
+      ],
+      "tech": ["Kotlin", "Java", "React Native", "Python", "TensorFlow"]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "Shaw Academy",
+      "period": "Dec 2016 - May 2017",
+      "location": "Bangalore, India",
+      "description": [
+        "Spearheaded the development of inaugural Android App",
+        "Integrated Live webinars, Video recordings, and Chat functionality",
+        "Implemented payment gateway and subscription management",
+        "Achieved 100K+ downloads within first three months"
+      ],
+      "tech": ["Android", "Java", "Firebase", "WebRTC"]
+    },
+    {
+      "period": "2015 - 2016",
+      "role": "Project Lead",
+      "company": "Xelp Design and Tech",
+      "location": "Bangalore, India",
+      "description": [
+        "Led Android team at startup incubator, overseeing logistics, fintech, and real estate applications.",
+        "Managed multiple client projects in logistics, fintech, and real estate domains",
+        "Led technical architecture decisions for Android applications",
+        "Mentored junior developers and implemented best practices"
+      ],
+      "tech": ["Android", "Java", "Firebase", "WebRTC"]
+    },
+    {
+      "period": "2012 - 2016",
+      "role": "Team Lead - Software Engineer",
+      "company": "Justdial Limited",
+      "description": [
+        "Led development of scalable native Android app for multiple countries and managed team of 4-5 members.",
+        "Scaled app to serve millions of users across multiple countries",
+        "Implemented agile methodologies and improved team productivity",
+        "Reduced app crash rate by 60% through robust error handling",
+        "Mentored and managed a team of 4-5 developers"
+      ],
+      "location": "Bangalore, India",
+      "tech": ["Android", "Java", "Firebase", "WebRTC"]
+    },
+    {
+      "role": "Software Engineer - Contract",
+      "company": "US Clients",
+      "period": "Present",
+      "location": "Remote",
+      "description": [
+        "Implementing Insurance and finance based work for mobile apps",
+        "Collaborating with Product Managers and stakeholders to enhance mobile app functionality",
+        "Lets discuss over a phone call for more details if required..."
+      ],
+      "tech": [
+        "React Native",
+        "Android",
+        "iOS",
+        "TypeScript",
+        "Redux",
+        "Kotlin",
+        "Java"
+      ]
+    }
+  ],
+  "achievements": {
+    "title": "Key Achievements",
+    "subtitle": "A Decade of Mobile Excellence",
+    "description": "Successfully delivered 10+ mobile applications, led multiple development teams, and implemented innovative solutions that improved user engagement and business metrics.",
+    "stats": [
+      { "number": "10+", "text": "Mobile Apps Delivered" },
+      { "number": "6+", "text": "Years Leadership" },
+      { "number": "40%", "text": "Performance Improvements" },
+      { "number": "100K+", "text": "App Downloads" }
+    ]
+  },
+  "animation": {
+    "particles": 20,
+    "staggerDelay": 0.15,
+    "timelineDuration": 1.5
+  }
+} 

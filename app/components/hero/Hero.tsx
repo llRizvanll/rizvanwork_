@@ -7,18 +7,10 @@ import ProfileImage from "./ProfileImage";
 import ScrollIndicator from "./ScrollIndicator";
 import { trackEvent } from "../../GoogleAnalytics";
 import TechSkills from "./TechSkills";
+import heroData from "../../data/hero.json";
 
 export default function Hero() {
-  const techSkills = [
-    { name: "A-I", logo: "/images/tech/ai_banner.webp" },
-    { name: "React Native", logo: "/images/tech/rn_banner.png" },
-    { name: "Kotlin", logo: "/images/tech/kt_banner.png" },
-    { name: "Mobile DevOps", logo: "/images/tech/md_banner.png" },
-    { name: "AI+ML", logo: "/images/tech/ai_plus_banner.jpg" },
-    { name: "Ts/Js", logo: "/images/tech/jt_banner.webp" },
-    { name: "Java", logo: "/images/tech/jv_banner.png" },
-    { name: "Python", logo: "/images/tech/py_banner.png" },
-  ];
+  const { techSkills } = heroData;
 
   const profileInfoRef = useRef<HTMLDivElement>(null);
 
