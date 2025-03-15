@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll } from 'framer-motion'
-import Hero from './components/Hero'
+import Hero from './components/hero/Hero'
 import About from './components/about/About'
 import Experience from './components/experience/Experience'
 import Skills from './components/Skills'
