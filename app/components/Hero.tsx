@@ -105,6 +105,11 @@ export default function Hero() {
                 options={{
                   strings: [
                     'Mobile Software Engineer',
+                    'Mobile DevOps Engineer',
+                    'Mobile AI Engineer',
+                    'Performance Engineer for Mobile',
+                    'React Native Migration',
+                    'Mobile Security Engineer',
                     'React Native Expert',
                     'AI Engineering Enthusiast',
                     'Android & iOS Developer'
