@@ -4,11 +4,27 @@ import { motion } from "framer-motion";
 import Section from "./Section";
 import { FaStar, FaStarHalf, FaRegStar } from "react-icons/fa";
 import skillsData from "@/data/skills.json";
+import { SkillsBackground } from "./SkillsBackground";
+import { StarRating } from "./StarRating";
 
 interface Skill {
   name: string;
   level: number; // Represents rating out of 5
   icon?: string;
+}
+
+interface SkillCategory {
+  title: string;
+  icon: string;
+  skills: Skill[];
+}
+
+interface SkillsData {
+  heading: string;
+  subheading: string;
+  skillCategories: SkillCategory[];
+  additionalExpertiseHeading: string;
+  additionalExpertise: string[];
 }
 
 export default function Skills() {
@@ -18,46 +34,7 @@ export default function Skills() {
     skillCategories, 
     additionalExpertiseHeading, 
     additionalExpertise 
-  } = skillsData;
-
-  const renderStars = (rating: number) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    // Add full stars
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <FaStar 
-          key={`full-${i}`} 
-          className="text-yellow-400 w-4 h-4"
-        />
-      );
-    }
-
-    // Add half star if needed
-    if (hasHalfStar) {
-      stars.push(
-        <FaStarHalf 
-          key="half" 
-          className="text-yellow-400 w-4 h-4"
-        />
-      );
-    }
-
-    // Add empty stars
-    const emptyStars = 5 - Math.ceil(rating);
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(
-        <FaRegStar 
-          key={`empty-${i}`} 
-          className="text-yellow-400 w-4 h-4"
-        />
-      );
-    }
-
-    return stars;
-  };
+  }: SkillsData = skillsData;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -76,56 +53,7 @@ export default function Skills() {
 
   return (
     <Section id="skills" className="relative overflow-hidden py-24">
-      {/* Beautiful layered background */}
-      <div className="absolute inset-0 z-0">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
-        
-        {/* Animated floating gradients */}
-        <motion.div 
-          className="absolute -top-[20%] -right-[10%] w-[60%] h-[40%] rounded-full bg-gradient-to-br from-blue-200/20 to-purple-200/10 blur-3xl"
-          animate={{
-            y: [0, 15, 0],
-            x: [0, -10, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        />
-        
-        <motion.div 
-          className="absolute -bottom-[10%] -left-[5%] w-[50%] h-[30%] rounded-full bg-gradient-to-tl from-blue-200/20 to-emerald-200/10 blur-3xl"
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        />
-        
-        {/* Mesh gradient overlay */}
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 70%),
-              radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.2) 0%, transparent 70%)
-            `
-          }}
-        ></div>
-        
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
-          }}
-        ></div>
-      </div>
+      <SkillsBackground />
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div
@@ -177,9 +105,7 @@ export default function Skills() {
                   >
                     <div className="flex justify-between items-center">
                       <span className="text-gray-800 font-medium">{skill.name}</span>
-                      <div className="flex space-x-1">
-                        {renderStars(skill.level)}
-                      </div>
+                      <StarRating rating={skill.level} />
                     </div>
                     <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
                       <motion.div 

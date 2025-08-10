@@ -34,6 +34,35 @@ function useCountUp(end: number, duration = 1200) {
 const About: React.FC = () => {
   const { stats, keyPoints } = aboutData;
 
+  // Call useCountUp hooks at the top level for each stat individually
+  const stat1Count = useCountUp(Number(stats[0]?.value) || 0);
+  const stat2Count = useCountUp(Number(stats[1]?.value) || 0);
+  const stat3Count = useCountUp(Number(stats[2]?.value) || 0);
+  const stat4Count = useCountUp(Number(stats[3]?.value) || 0);
+
+  // Create animated stats array with pre-computed values
+  const animatedStats = stats.map((stat, index) => {
+    const isNumber = !isNaN(Number(stat.value));
+    let animatedValue;
+    
+    if (isNumber) {
+      switch (index) {
+        case 0: animatedValue = stat1Count; break;
+        case 1: animatedValue = stat2Count; break;
+        case 2: animatedValue = stat3Count; break;
+        case 3: animatedValue = stat4Count; break;
+        default: animatedValue = stat.value;
+      }
+    } else {
+      animatedValue = stat.value;
+    }
+    
+    return {
+      ...stat,
+      animatedValue
+    };
+  });
+
   // Parallax effect for background
   const bgRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -159,30 +188,25 @@ const About: React.FC = () => {
             </div>
             {/* Stats with animated counters */}
             <div className="grid grid-cols-2 gap-6 mt-8">
-              {stats.map((stat, index) => {
-                // Use animated counter for numbers
-                const isNumber = !isNaN(Number(stat.value));
-                const value = isNumber ? useCountUp(Number(stat.value)) : stat.value;
-                return (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + index * 0.1, duration: 0.6 }}
-                    whileHover={{ 
-                      y: -5, 
-                      boxShadow: "0 15px 30px rgba(59, 130, 246, 0.1)",
-                      backgroundColor: "rgba(255, 255, 255, 0.95)" 
-                    }}
-                    className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-blue-100 transition-all duration-300"
-                  >
-                    <h3 className="text-3xl font-extrabold mb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                      {value}
-                    </h3>
-                    <p className="text-gray-500 font-medium">{stat.label}</p>
-                  </motion.div>
-                );
-              })}
+              {animatedStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.6 }}
+                  whileHover={{ 
+                    y: -5, 
+                    boxShadow: "0 15px 30px rgba(59, 130, 246, 0.1)",
+                    backgroundColor: "rgba(255, 255, 255, 0.95)" 
+                  }}
+                  className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-blue-100 transition-all duration-300"
+                >
+                  <h3 className="text-3xl font-extrabold mb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                    {stat.animatedValue}
+                  </h3>
+                  <p className="text-gray-500 font-medium">{stat.label}</p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 

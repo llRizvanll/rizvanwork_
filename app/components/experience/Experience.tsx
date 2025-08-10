@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Section from "../Section";
 import experienceData from "@/data/experience.json";
 import BackgroundEffects from "./BackgroundEffects";
@@ -8,10 +8,10 @@ import SectionHeader from "../shared/SectionHeader";
 import TechnologyFilter from "./TechnologyFilter";
 import ExperienceTimeline from "./ExperienceTimeline";
 import AchievementsSection from "./AchievementsSection";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 export default function Experience() {
   const [filter, setFilter] = useState("all");
-  const [animateTimeline, setAnimateTimeline] = useState(false);
   
   const { 
     title, 
@@ -21,26 +21,15 @@ export default function Experience() {
     animation 
   } = experienceData;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Add timeline animation trigger
-      const experienceSection = document.getElementById("experience");
-      if (experienceSection) {
-        const rect = experienceSection.getBoundingClientRect();
-        if (rect.top <= window.innerHeight * 0.75 && !animateTimeline) {
-          setAnimateTimeline(true);
-        }
-      }
-    };
+  // Custom hook for scroll-based animation
+  const { animateTimeline } = useScrollAnimation("experience");
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [animateTimeline]);
-
+  // Filter experiences based on selected technology
   const filteredExperiences = filter === "all" 
     ? experiences 
     : experiences.filter(exp => exp.tech.includes(filter));
     
+  // Get unique technologies for filter options
   const uniqueTechnologies = [...new Set(experiences.flatMap(exp => exp.tech))];
 
   return (
