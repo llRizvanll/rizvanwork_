@@ -44,22 +44,22 @@ const About: React.FC = () => {
   const animatedStats = stats.map((stat, index) => {
     const isNumber = !isNaN(Number(stat.value));
     let animatedValue;
-    
+
     if (isNumber) {
       switch (index) {
-        case 0: animatedValue = stat1Count; break;
-        case 1: animatedValue = stat2Count; break;
-        case 2: animatedValue = stat3Count; break;
-        case 3: animatedValue = stat4Count; break;
-        default: animatedValue = stat.value;
+      case 0: animatedValue = stat1Count; break;
+      case 1: animatedValue = stat2Count; break;
+      case 2: animatedValue = stat3Count; break;
+      case 3: animatedValue = stat4Count; break;
+      default: animatedValue = stat.value;
       }
     } else {
       animatedValue = stat.value;
     }
-    
+
     return {
       ...stat,
-      animatedValue
+      animatedValue,
     };
   });
 
@@ -91,7 +91,7 @@ const About: React.FC = () => {
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
         {/* Animated floating gradients */}
-        <motion.div 
+        <motion.div
           className="absolute -top-[20%] -left-[10%] w-[70%] h-[50%] rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/20 blur-3xl"
           animate={{
             y: [0, 20, 0],
@@ -100,10 +100,10 @@ const About: React.FC = () => {
           transition={{
             duration: 15,
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: 'reverse',
           }}
         />
-        <motion.div 
+        <motion.div
           className="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tl from-blue-200/20 to-emerald-200/20 blur-3xl"
           animate={{
             y: [0, -30, 0],
@@ -112,7 +112,7 @@ const About: React.FC = () => {
           transition={{
             duration: 18,
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: 'reverse',
           }}
         />
         {/* Mesh gradient overlay */}
@@ -121,14 +121,14 @@ const About: React.FC = () => {
             backgroundImage: `
               radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3) 0%, transparent 70%),
               radial-gradient(circle at 70% 70%, rgba(16, 185, 129, 0.2) 0%, transparent 70%)
-            `
+            `,
           }}
         ></div>
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+            backgroundSize: '60px 60px',
           }}
         ></div>
         {/* Decorative elements */}
@@ -142,10 +142,10 @@ const About: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center mb-20"
         >
-          <motion.span 
+          <motion.span
             className="inline-block text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-2 px-4 py-1 bg-blue-50 rounded-full"
             whileHover={{ scale: 1.05 }}
           >
@@ -154,7 +154,7 @@ const About: React.FC = () => {
           <h2 className="text-5xl sm:text-6xl font-extrabold mb-6 text-gray-800 tracking-tight leading-tight">
             About <span className="text-blue-600">Me</span>
           </h2>
-          <motion.div 
+          <motion.div
             className="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mx-auto"
             initial={{ width: 0 }}
             whileInView={{ width: 96 }}
@@ -168,7 +168,7 @@ const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
             className="relative"
           >
             {/* Profile with modern frame */}
@@ -194,10 +194,10 @@ const About: React.FC = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + index * 0.1, duration: 0.6 }}
-                  whileHover={{ 
-                    y: -5, 
-                    boxShadow: "0 15px 30px rgba(59, 130, 246, 0.1)",
-                    backgroundColor: "rgba(255, 255, 255, 0.95)" 
+                  whileHover={{
+                    y: -5,
+                    boxShadow: '0 15px 30px rgba(59, 130, 246, 0.1)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
                   }}
                   className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-blue-100 transition-all duration-300"
                 >
@@ -214,11 +214,11 @@ const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
             className="space-y-8"
           >
             <motion.div
-              whileHover={{ boxShadow: "0 20px 40px rgba(59, 130, 246, 0.1)" }}
+              whileHover={{ boxShadow: '0 20px 40px rgba(59, 130, 246, 0.1)' }}
               className="bg-white/80 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-blue-100/80 transition-all duration-300"
             >
               <h3 className="text-4xl font-bold text-gray-800 mb-6">
@@ -253,7 +253,7 @@ const About: React.FC = () => {
               <div className="flex flex-wrap gap-6 pt-12">
                 <motion.a
                   href="#contact"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(59, 130, 246, 0.3)" }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(59, 130, 246, 0.3)' }}
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg transition-all duration-300 font-medium focus:outline-none focus:ring-2 focus:ring-blue-400"
                   tabIndex={0}
@@ -266,7 +266,7 @@ const About: React.FC = () => {
                   href="/assets/rizvan_hawaldar_2024.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(59, 130, 246, 0.1)" }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(59, 130, 246, 0.1)' }}
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-2 px-8 py-4 border-2 border-blue-400 text-blue-600 rounded-xl hover:bg-blue-50 transition-all duration-300 font-medium focus:outline-none focus:ring-2 focus:ring-blue-400"
                   tabIndex={0}

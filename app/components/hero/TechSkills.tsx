@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { trackEvent } from "../../GoogleAnalytics";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { trackEvent } from '../../GoogleAnalytics';
 
 interface TechSkill {
   name: string;
@@ -11,49 +11,49 @@ interface TechSkill {
 export default function TechSkills() {
   const techSkills = [
     {
-      name: "A-I",
-      logo: "/assets/images/tech/ai_banner.png",
-      color: "#FF5252",
+      name: 'A-I',
+      logo: '/assets/images/tech/ai_banner.png',
+      color: '#FF5252',
     },
     {
-      name: "React Native",
-      logo: "/assets/images/tech/rn_banner.png",
-      color: "#2196F3",
+      name: 'React Native',
+      logo: '/assets/images/tech/rn_banner.png',
+      color: '#2196F3',
     },
     {
-      name: "Kotlin",
-      logo: "/assets/images/tech/kt_banner.png",
-      color: "#7C4DFF",
+      name: 'Kotlin',
+      logo: '/assets/images/tech/kt_banner.png',
+      color: '#7C4DFF',
     },
     {
-      name: "Mobile DevOps",
-      logo: "/assets/images/tech/md_banner.png",
-      color: "#00BFA5",
+      name: 'Mobile DevOps',
+      logo: '/assets/images/tech/md_banner.png',
+      color: '#00BFA5',
     },
     {
-      name: "AI+ML",
-      logo: "/assets/images/tech/ai_plus_banner.jpg",
-      color: "#FF4081",
+      name: 'AI+ML',
+      logo: '/assets/images/tech/ai_plus_banner.jpg',
+      color: '#FF4081',
     },
     {
-      name: "Ts/Js",
-      logo: "/assets/images/tech/jt_banner.png",
-      color: "#FFC107",
+      name: 'Ts/Js',
+      logo: '/assets/images/tech/jt_banner.png',
+      color: '#FFC107',
     },
     {
-      name: "Java",
-      logo: "/assets/images/tech/jv_banner.png",
-      color: "#FF9800",
+      name: 'Java',
+      logo: '/assets/images/tech/jv_banner.png',
+      color: '#FF9800',
     },
     {
-      name: "Python",
-      logo: "/assets/images/tech/py_banner.png",
-      color: "#4CAF50",
+      name: 'Python',
+      logo: '/assets/images/tech/py_banner.png',
+      color: '#4CAF50',
     },
   ];
 
   const handleSkillClick = (skill: string) => {
-    trackEvent("click", "skill", skill);
+    trackEvent('click', 'skill', skill);
   };
 
   return (
@@ -64,7 +64,7 @@ export default function TechSkills() {
           className="material-card"
           style={
             {
-              "--card-color": skill.color,
+              '--card-color': skill.color,
             } as React.CSSProperties
           }
           initial={{ opacity: 0, scale: 0.9 }}

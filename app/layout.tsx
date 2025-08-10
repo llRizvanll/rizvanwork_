@@ -1,14 +1,14 @@
-import Script from 'next/script'
-import './globals.css'
-import { Inter } from 'next/font/google'
-import GoogleAnalytics from './GoogleAnalytics'
-import ErrorBoundary from './components/shared/ErrorBoundary'
-import { SEO_CONFIG, ANALYTICS_CONFIG } from './config'
+import Script from 'next/script';
+import './globals.css';
+import { Inter } from 'next/font/google';
+import GoogleAnalytics from './GoogleAnalytics';
+import ErrorBoundary from './components/shared/ErrorBoundary';
+import { SEO_CONFIG, ANALYTICS_CONFIG } from './config';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-})
+});
 
 export const metadata = {
   title: SEO_CONFIG.defaultTitle,
@@ -53,7 +53,7 @@ export const metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
-}
+};
 
 export default function RootLayout({
   children,
@@ -67,38 +67,38 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.github.com" />
-        
+
         {/* Favicon and app icons */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        
+
         {/* Manifest for PWA */}
         <link rel="manifest" href="/site.webmanifest" />
-        
+
         {/* Theme color */}
         <meta name="theme-color" content="#3b82f6" />
       </head>
-      
+
       <body className={inter.className}>
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
-        
+
         {/* Analytics */}
         {ANALYTICS_CONFIG.googleAnalytics.enabled && (
           <GoogleAnalytics />
         )}
-        
+
         {/* Simple Analytics (optional) */}
         {ANALYTICS_CONFIG.simpleAnalytics.enabled && (
-          <Script 
+          <Script
             src={ANALYTICS_CONFIG.simpleAnalytics.scriptUrl}
             strategy="afterInteractive"
           />
         )}
       </body>
     </html>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function ProfileImage() {
   return (
@@ -21,4 +21,4 @@ export default function ProfileImage() {
       </div>
     </motion.div>
   );
-} 
+}

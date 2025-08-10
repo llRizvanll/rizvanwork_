@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
-import { RESPONSIVE_BREAKPOINTS } from '../constants'
+import { useState, useEffect, useCallback } from 'react';
+import { RESPONSIVE_BREAKPOINTS } from '../constants';
 
 export interface ResponsiveState {
   isMobile: boolean
@@ -20,7 +20,7 @@ export interface ResponsiveBreakpoints {
 
 /**
  * Comprehensive responsive hook that provides device detection and responsive utilities
- * 
+ *
  * @returns Object containing responsive state and utility functions
  */
 export const useResponsive = (): ResponsiveState & ResponsiveBreakpoints => {
@@ -32,13 +32,13 @@ export const useResponsive = (): ResponsiveState & ResponsiveBreakpoints => {
     isTabletLarge: false,
     screenWidth: 0,
     screenHeight: 0,
-    orientation: 'portrait'
-  })
+    orientation: 'portrait',
+  });
 
   const updateResponsiveState = useCallback(() => {
-    const width = window.innerWidth
-    const height = window.innerHeight
-    
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
     const newState: ResponsiveState = {
       isMobile: width < RESPONSIVE_BREAKPOINTS.tablet,
       isTablet: width >= RESPONSIVE_BREAKPOINTS.tablet && width < RESPONSIVE_BREAKPOINTS.desktop,
@@ -47,56 +47,56 @@ export const useResponsive = (): ResponsiveState & ResponsiveBreakpoints => {
       isTabletLarge: width >= RESPONSIVE_BREAKPOINTS.tabletLarge,
       screenWidth: width,
       screenHeight: height,
-      orientation: width > height ? 'landscape' : 'portrait'
-    }
-    
-    setState(newState)
-  }, [])
+      orientation: width > height ? 'landscape' : 'portrait',
+    };
+
+    setState(newState);
+  }, []);
 
   useEffect(() => {
     // Initial check
-    updateResponsiveState()
-    
+    updateResponsiveState();
+
     // Add event listener for window resize with debouncing
-    let timeoutId: NodeJS.Timeout
-    
+    let timeoutId: NodeJS.Timeout;
+
     const handleResize = () => {
-      clearTimeout(timeoutId)
-      timeoutId = setTimeout(updateResponsiveState, 100)
-    }
-    
-    window.addEventListener('resize', handleResize)
-    window.addEventListener('orientationchange', updateResponsiveState)
-    
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateResponsiveState, 100);
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', updateResponsiveState);
+
     // Cleanup
     return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('orientationchange', updateResponsiveState)
-      clearTimeout(timeoutId)
-    }
-  }, [updateResponsiveState])
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', updateResponsiveState);
+      clearTimeout(timeoutId);
+    };
+  }, [updateResponsiveState]);
 
   // Utility functions for breakpoint checking
   const isAbove = useCallback((breakpoint: keyof typeof RESPONSIVE_BREAKPOINTS): boolean => {
-    return state.screenWidth >= RESPONSIVE_BREAKPOINTS[breakpoint]
-  }, [state.screenWidth])
+    return state.screenWidth >= RESPONSIVE_BREAKPOINTS[breakpoint];
+  }, [state.screenWidth]);
 
   const isBelow = useCallback((breakpoint: keyof typeof RESPONSIVE_BREAKPOINTS): boolean => {
-    return state.screenWidth < RESPONSIVE_BREAKPOINTS[breakpoint]
-  }, [state.screenWidth])
+    return state.screenWidth < RESPONSIVE_BREAKPOINTS[breakpoint];
+  }, [state.screenWidth]);
 
   const isBetween = useCallback((
-    min: keyof typeof RESPONSIVE_BREAKPOINTS, 
+    min: keyof typeof RESPONSIVE_BREAKPOINTS,
     max: keyof typeof RESPONSIVE_BREAKPOINTS
   ): boolean => {
-    return state.screenWidth >= RESPONSIVE_BREAKPOINTS[min] && 
-           state.screenWidth < RESPONSIVE_BREAKPOINTS[max]
-  }, [state.screenWidth])
+    return state.screenWidth >= RESPONSIVE_BREAKPOINTS[min] &&
+           state.screenWidth < RESPONSIVE_BREAKPOINTS[max];
+  }, [state.screenWidth]);
 
   return {
     ...state,
     isAbove,
     isBelow,
-    isBetween
-  }
-}
+    isBetween,
+  };
+};

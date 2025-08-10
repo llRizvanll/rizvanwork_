@@ -1,44 +1,44 @@
-'use client'
+'use client';
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import navbarData from '@/data/navbar.json'
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import navbarData from '@/data/navbar.json';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  
-  const { brand, navItems, mobileMenuDelay } = navbarData
-  
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const { brand, navItems, mobileMenuDelay } = navbarData;
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
-  }
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   const handleNavItemClick = (e: React.MouseEvent, id: string) => {
     // Get the target element
     const targetElement = document.getElementById(id);
-    
+
     if (targetElement) {
       // Prevent default behavior
       e.preventDefault();
-      
+
       // Close the mobile menu
       setMobileMenuOpen(false);
-      
+
       // Add a small delay before scrolling to make sure mobile menu animation completes
       setTimeout(() => {
         targetElement.scrollIntoView({ behavior: 'smooth' });
       }, mobileMenuDelay);
     }
-  }
+  };
 
   return (
     <motion.nav
@@ -51,14 +51,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <motion.a 
+          <motion.a
             href="#"
             className="text-xl font-bold text-fb-blue"
             whileHover={{ scale: 1.05 }}
           >
             {brand}
           </motion.a>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
@@ -74,10 +74,10 @@ export default function Navbar() {
               </motion.a>
             ))}
           </div>
-          
+
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={toggleMobileMenu}
               className="flex items-center p-2 rounded-md text-fb-blue hover:text-fb-blue-dark focus:outline-none"
               aria-label="Toggle menu"
@@ -95,11 +95,11 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             className="md:hidden bg-white shadow-lg"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -126,5 +126,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.nav>
-  )
+  );
 }

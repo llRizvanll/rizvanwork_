@@ -1,4 +1,10 @@
-import { BREAKPOINTS } from '../types'
+/**
+ * @fileoverview Application constants and configuration values.
+ * Contains animation settings, responsive breakpoints, styling constants,
+ * and other configuration values used throughout the application.
+ */
+
+import { BREAKPOINTS } from '../types';
 
 // Animation constants
 export const ANIMATION_DURATIONS = {
@@ -6,38 +12,38 @@ export const ANIMATION_DURATIONS = {
   normal: 0.4,
   slow: 0.6,
   slower: 0.8,
-} as const
+} as const;
 
 export const ANIMATION_DELAYS = {
   none: 0,
   small: 0.1,
   medium: 0.2,
   large: 0.3,
-} as const
+} as const;
 
 export const ANIMATION_EASINGS = {
   easeOut: [0.4, 0, 0.2, 1],
   easeIn: [0.4, 0, 1, 1],
   easeInOut: [0.4, 0, 0.2, 1],
-} as const
+} as const;
 
 // Common animation variants
 export const FADE_IN_UP = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: ANIMATION_DURATIONS.normal }
-}
+  transition: { duration: ANIMATION_DURATIONS.normal },
+};
 
 export const FADE_IN_DOWN = {
   initial: { opacity: 0, y: -20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: ANIMATION_DURATIONS.normal }
-}
+  transition: { duration: ANIMATION_DURATIONS.normal },
+};
 
 export const SCALE_ON_HOVER = {
   whileHover: { scale: 1.05 },
-  whileTap: { scale: 0.95 }
-}
+  whileTap: { scale: 0.95 },
+};
 
 // Responsive breakpoints
 export const RESPONSIVE_BREAKPOINTS = {
@@ -45,7 +51,7 @@ export const RESPONSIVE_BREAKPOINTS = {
   // Additional breakpoints for specific use cases
   mobileLarge: 480,
   tabletLarge: 1200,
-} as const
+} as const;
 
 // Z-index layers for consistent layering
 export const Z_INDEX = {
@@ -55,7 +61,7 @@ export const Z_INDEX = {
   modal: 30,
   tooltip: 40,
   notification: 50,
-} as const
+} as const;
 
 // Color palette (can be extended for theming)
 export const COLORS = {
@@ -84,7 +90,7 @@ export const COLORS = {
   warning: '#f59e0b',
   error: '#ef4444',
   info: '#3b82f6',
-} as const
+} as const;
 
 // Spacing scale
 export const SPACING = {
@@ -96,7 +102,7 @@ export const SPACING = {
   '2xl': '3rem',    // 48px
   '3xl': '4rem',    // 64px
   '4xl': '6rem',    // 96px
-} as const
+} as const;
 
 // Typography scale
 export const TYPOGRAPHY = {
@@ -125,7 +131,7 @@ export const TYPOGRAPHY = {
     normal: 1.5,
     relaxed: 1.75,
   },
-} as const
+} as const;
 
 // Shadow configurations
 export const SHADOWS = {
@@ -134,7 +140,7 @@ export const SHADOWS = {
   md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
   lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
   xl: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-} as const
+} as const;
 
 // Border radius values
 export const BORDER_RADIUS = {
@@ -147,21 +153,21 @@ export const BORDER_RADIUS = {
   '2xl': '1rem',     // 16px
   '3xl': '1.5rem',   // 24px
   full: '9999px',
-} as const
+} as const;
 
 // API endpoints and configuration
 export const API_CONFIG = {
   baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://api.github.com',
   timeout: 10000,
   retries: 3,
-} as const
+} as const;
 
 // Social media links
 export const SOCIAL_LINKS = {
   github: 'https://github.com/llrizvanll',
   linkedin: 'https://linkedin.com/in/rizvan-hawaldar',
   twitter: 'https://twitter.com/rizvan_hawaldar',
-} as const
+} as const;
 
 // Navigation configuration
 export const NAVIGATION = {
@@ -174,4 +180,4 @@ export const NAVIGATION = {
     { id: 'education', label: 'Education', href: '#education' },
     { id: 'contact', label: 'Contact', href: '#contact' },
   ],
-} as const
+} as const;

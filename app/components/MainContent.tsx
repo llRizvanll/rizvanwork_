@@ -1,14 +1,14 @@
-import React from 'react'
-import Hero from './hero/Hero'
-import About from './about/About'
-import Experience from './experience/Experience'
-import Skills from './Skills'
-import Education from './education/Education'
-import Projects from './Projects'
-import Contact from './Contact'
-import CompanyLogos from './experience/CompanyLogos'
-import { SectionConfig } from '../types'
-import { Z_INDEX } from '../constants'
+import React from 'react';
+import Hero from './hero/Hero';
+import About from './about/About';
+import Experience from './experience/Experience';
+import Skills from './Skills';
+import Education from './education/Education';
+import Projects from './Projects';
+import Contact from './Contact';
+import CompanyLogos from './experience/CompanyLogos';
+import { SectionConfig } from '../types';
+import { Z_INDEX } from '../constants';
 
 /**
  * Array of all sections with their configurations
@@ -21,7 +21,7 @@ const sections: SectionConfig[] = [
     component: Hero,
     zIndex: Z_INDEX.content,
     className: 'relative z-10',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'about',
@@ -29,7 +29,7 @@ const sections: SectionConfig[] = [
     component: About,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'experience',
@@ -37,7 +37,7 @@ const sections: SectionConfig[] = [
     component: Experience,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'skills',
@@ -45,7 +45,7 @@ const sections: SectionConfig[] = [
     component: Skills,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'projects',
@@ -53,7 +53,7 @@ const sections: SectionConfig[] = [
     component: Projects,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'education',
@@ -61,7 +61,7 @@ const sections: SectionConfig[] = [
     component: Education,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'contact',
@@ -69,7 +69,7 @@ const sections: SectionConfig[] = [
     component: Contact,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 'company-logos',
@@ -77,24 +77,24 @@ const sections: SectionConfig[] = [
     component: CompanyLogos,
     zIndex: Z_INDEX.content,
     className: 'relative z-20',
-    isVisible: true
-  }
-]
+    isVisible: true,
+  },
+];
 
 /**
  * MainContent component that renders all sections of the portfolio
- * 
+ *
  * Features:
  * - Modular section configuration
  * - Easy section reordering
  * - Conditional section visibility
  * - Consistent z-index layering
- * 
+ *
  * @returns JSX element containing all portfolio sections
  */
 export default function MainContent(): React.JSX.Element {
   // Filter visible sections for potential future conditional rendering
-  const visibleSections = sections.filter(section => section.isVisible)
+  const visibleSections = sections.filter(section => section.isVisible);
 
   return (
     <div className="relative">
@@ -104,5 +104,5 @@ export default function MainContent(): React.JSX.Element {
         </section>
       ))}
     </div>
-  )
-} 
+  );
+}

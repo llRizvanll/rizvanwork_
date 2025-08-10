@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useState } from "react";
-import Section from "./Section";
+import { useState } from 'react';
+import Section from './Section';
 import { trackEvent } from '../GoogleAnalytics';
 import contactData from '@/data/contact.json';
 
@@ -37,7 +37,7 @@ const SocialLinkItem: React.FC<SocialLinkItemProps> = ({ link, delay }) => {
           scale: 1.1,
           backgroundColor: link.hoverBg,
           borderColor: link.color,
-          boxShadow: "0 10px 25px rgba(59, 130, 246, 0.15)"
+          boxShadow: '0 10px 25px rgba(59, 130, 246, 0.15)',
         }}
         whileTap={{ scale: 0.95 }}
       >
@@ -54,27 +54,27 @@ const SocialLinkItem: React.FC<SocialLinkItemProps> = ({ link, delay }) => {
 
 const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
-  
-  const { 
-    heading, 
-    subheading, 
-    socialLinks, 
-    contactInfo, 
+    'idle' | 'sending' | 'sent' | 'error'
+  >('idle');
+
+  const {
+    heading,
+    subheading,
+    socialLinks,
+    contactInfo,
     formLabels,
-    socialHeading 
+    socialHeading,
   } = contactData;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus("sending");
+    setFormStatus('sending');
 
     try {
       const formData = new FormData(e.currentTarget);
-      const name = formData.get("name") as string;
-      const email = formData.get("email") as string;
-      const message = formData.get("message") as string;
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const message = formData.get('message') as string;
 
       const subject = `New Message from ${name}`;
       // Create the email body with name, email, and message, each on its own line
@@ -85,16 +85,16 @@ const Contact: React.FC = () => {
         subject
       )}&body=${encodeURIComponent(body)}`;
 
-      setFormStatus("sent");
-      
+      setFormStatus('sent');
+
       trackEvent(
         'click',
         'contact',
         'send_message_button'
       );
-      
+
     } catch (error) {
-      setFormStatus("error");
+      setFormStatus('error');
     }
   };
 
@@ -104,9 +104,9 @@ const Contact: React.FC = () => {
       <div className="absolute inset-0 z-0">
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
-        
+
         {/* Animated floating gradients */}
-        <motion.div 
+        <motion.div
           className="absolute -top-[30%] -right-[10%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-blue-200/30 to-purple-200/20 blur-3xl"
           animate={{
             y: [0, 20, 0],
@@ -115,11 +115,11 @@ const Contact: React.FC = () => {
           transition={{
             duration: 15,
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: 'reverse',
           }}
         />
-        
-        <motion.div 
+
+        <motion.div
           className="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tl from-blue-200/20 to-emerald-200/20 blur-3xl"
           animate={{
             y: [0, -30, 0],
@@ -128,33 +128,33 @@ const Contact: React.FC = () => {
           transition={{
             duration: 18,
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: 'reverse',
           }}
         />
-        
+
         {/* Mesh gradient overlay */}
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
               radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 70%),
               radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.2) 0%, transparent 70%)
-            `
+            `,
           }}
         ></div>
-        
+
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm24-24h-4v2h4v4h2v-4h4v-2h-4zm0 24h-4v2h4v4h2v-4h4v-2h-4zm0-36h-4v2h4v4h2v-4h4v-2h-4zM12 8V4H8v4H4v2h4v4h2V6h4V4H8zm0 20v-4H8v4H4v2h4v4h2v-4h4v-2h-4zm0 16v-4H8v4H4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm24-24h-4v2h4v4h2v-4h4v-2h-4zm0 24h-4v2h4v4h2v-4h4v-2h-4zm0-36h-4v2h4v4h2v-4h4v-2h-4zM12 8V4H8v4H4v2h4v4h2V6h4V4H8zm0 20v-4H8v4H4v2h4v4h2v-4h4v-2h-4zm0 16v-4H8v4H4v2h4v4h2v-4h4v-2h-4z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+            backgroundSize: '60px 60px',
           }}
         ></div>
-        
+
         {/* Decorative elements */}
         <div className="absolute -top-10 left-10 w-40 h-40 rounded-full border-8 border-blue-100/20 backdrop-blur-sm"></div>
         <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full border-12 border-blue-100/20 backdrop-blur-sm"></div>
       </div>
-    
+
       <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
@@ -186,7 +186,7 @@ const Contact: React.FC = () => {
                   {formLabels.name}
                 </label>
                 <motion.input
-                  whileFocus={{ scale: 1.01, boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)" }}
+                  whileFocus={{ scale: 1.01, boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.1)' }}
                   type="text"
                   id="name"
                   name="name"
@@ -203,7 +203,7 @@ const Contact: React.FC = () => {
                   {formLabels.email}
                 </label>
                 <motion.input
-                  whileFocus={{ scale: 1.01, boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)" }}
+                  whileFocus={{ scale: 1.01, boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.1)' }}
                   type="email"
                   id="email"
                   name="email"
@@ -222,7 +222,7 @@ const Contact: React.FC = () => {
                   {formLabels.message}
                 </label>
                 <motion.textarea
-                  whileFocus={{ scale: 1.01, boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)" }}
+                  whileFocus={{ scale: 1.01, boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.1)' }}
                   id="message"
                   name="message"
                   rows={4}
@@ -232,19 +232,19 @@ const Contact: React.FC = () => {
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(59, 130, 246, 0.3)" }}
+                whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(59, 130, 246, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                disabled={formStatus === "sending"}
+                disabled={formStatus === 'sending'}
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-all shadow-lg shadow-blue-500/20"
               >
-                {formStatus === "sending"
+                {formStatus === 'sending'
                   ? formLabels.sending
-                  : formStatus === "sent"
-                  ? formLabels.sent
-                  : formStatus === "error"
-                  ? formLabels.error
-                  : formLabels.submit}
+                  : formStatus === 'sent'
+                    ? formLabels.sent
+                    : formStatus === 'error'
+                      ? formLabels.error
+                      : formLabels.submit}
               </motion.button>
             </form>
           </motion.div>

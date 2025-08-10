@@ -34,7 +34,7 @@ const Education: React.FC = () => {
   return (
     <Section id="education" className="relative overflow-hidden py-24">
       <EducationBackground />
-      
+
       <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -42,7 +42,7 @@ const Education: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.span 
+          <motion.span
             className="inline-block text-blue-600 font-medium text-sm uppercase tracking-wider mb-2 px-4 py-1 bg-blue-50 rounded-full"
             whileHover={{ scale: 1.05 }}
           >
@@ -54,7 +54,7 @@ const Education: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Formal Education */}
-          <motion.div 
+          <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -70,7 +70,7 @@ const Education: React.FC = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(59, 130, 246, 0.1)" }}
+                whileHover={{ scale: 1.02, boxShadow: '0 10px 25px rgba(59, 130, 246, 0.1)' }}
                 className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-xl transition-all border border-blue-100"
               >
                 <div className="flex items-start gap-4">
@@ -87,7 +87,7 @@ const Education: React.FC = () => {
           </motion.div>
 
           {/* Certifications */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

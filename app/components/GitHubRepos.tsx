@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -6,16 +6,16 @@ import repoData from '@/data/githubrepo.json';
 
 const GitHubRepos: React.FC = () => {
   const { heading, repositories } = repoData;
-  
+
   return (
     <section className="py-10 relative overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 z-0">
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-white"></div>
-        
+
         {/* Animated floating gradients */}
-        <motion.div 
+        <motion.div
           className="absolute -top-[10%] right-[20%] w-[40%] h-[30%] rounded-full bg-gradient-to-br from-blue-200/10 to-indigo-200/5 blur-3xl"
           animate={{
             y: [0, 10, 0],
@@ -24,22 +24,22 @@ const GitHubRepos: React.FC = () => {
           transition={{
             duration: 12,
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: 'reverse',
           }}
         />
-        
+
         {/* Mesh gradient overlay */}
         <div className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `
               radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 70%)
-            `
+            `,
           }}
         ></div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -47,7 +47,7 @@ const GitHubRepos: React.FC = () => {
         >
           {heading}
         </motion.h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {repositories.map((repo, index) => (
             <motion.div
@@ -55,14 +55,14 @@ const GitHubRepos: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -8, boxShadow: "0 15px 30px rgba(59, 130, 246, 0.1)" }}
+              whileHover={{ y: -8, boxShadow: '0 15px 30px rgba(59, 130, 246, 0.1)' }}
               className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-md border border-blue-100 transition-all transform"
             >
               <h3 className="text-xl font-semibold mb-3">
-                <a 
-                  href={repo.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={repo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {repo.name}

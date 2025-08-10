@@ -14,7 +14,7 @@ declare global {
 export const pageview = (url: string) => {
   if (typeof window.gtag !== 'undefined') {
     window.gtag('config', 'G-X2LTV74SHD', {
-      page_path: url,
+      pagePath: url,
     });
   }
 };
@@ -27,8 +27,8 @@ export const trackEvent = (
 ) => {
   if (typeof window.gtag !== 'undefined') {
     window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
+      eventCategory: category,
+      eventLabel: label,
       value: value,
     });
   }
@@ -50,7 +50,7 @@ export default function GoogleAnalytics() {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-X2LTV74SHD', {
-              page_path: window.location.pathname,
+              pagePath: window.location.pathname,
             });
           `,
         }}

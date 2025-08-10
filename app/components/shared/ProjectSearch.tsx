@@ -9,10 +9,10 @@ interface ProjectSearchProps {
   className?: string;
 }
 
-export const ProjectSearch: React.FC<ProjectSearchProps> = ({ 
-  projects, 
-  onSearchResults, 
-  className = '' 
+export const ProjectSearch: React.FC<ProjectSearchProps> = ({
+  projects,
+  onSearchResults,
+  className = '',
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -32,17 +32,17 @@ export const ProjectSearch: React.FC<ProjectSearchProps> = ({
   // Filter projects based on search criteria
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
-      const matchesSearch = searchTerm === '' || 
+      const matchesSearch = searchTerm === '' ||
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.features.some(feature => 
+        project.features.some(feature =>
           feature.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-      const matchesCategory = selectedCategory === 'all' || 
+      const matchesCategory = selectedCategory === 'all' ||
         project.category === selectedCategory;
 
-      const matchesTech = selectedTech === 'all' || 
+      const matchesTech = selectedTech === 'all' ||
         project.tech.includes(selectedTech);
 
       return matchesSearch && matchesCategory && matchesTech;

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Section from "./Section";
-import { FaStar, FaStarHalf, FaRegStar } from "react-icons/fa";
-import skillsData from "@/data/skills.json";
-import { SkillsBackground } from "./SkillsBackground";
-import { StarRating } from "./StarRating";
+import { motion } from 'framer-motion';
+import Section from './Section';
+import { FaStar, FaStarHalf, FaRegStar } from 'react-icons/fa';
+import skillsData from '@/data/skills.json';
+import { SkillsBackground } from './SkillsBackground';
+import { StarRating } from './StarRating';
 
 interface Skill {
   name: string;
@@ -28,12 +28,12 @@ interface SkillsData {
 }
 
 export default function Skills() {
-  const { 
-    heading, 
-    subheading, 
-    skillCategories, 
-    additionalExpertiseHeading, 
-    additionalExpertise 
+  const {
+    heading,
+    subheading,
+    skillCategories,
+    additionalExpertiseHeading,
+    additionalExpertise,
   }: SkillsData = skillsData;
 
   const containerVariants = {
@@ -41,20 +41,20 @@ export default function Skills() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
     <Section id="skills" className="relative overflow-hidden py-24">
       <SkillsBackground />
-      
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -62,7 +62,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.span 
+          <motion.span
             className="inline-block text-blue-600 font-medium text-sm uppercase tracking-wider mb-2 px-4 py-1 bg-blue-50 rounded-full"
             whileHover={{ scale: 1.05 }}
           >
@@ -84,7 +84,7 @@ export default function Skills() {
             <motion.div
               key={category.title}
               variants={itemVariants}
-              whileHover={{ scale: 1.03, boxShadow: "0 15px 30px rgba(59, 130, 246, 0.1)" }}
+              whileHover={{ scale: 1.03, boxShadow: '0 15px 30px rgba(59, 130, 246, 0.1)' }}
               className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-md hover:shadow-xl transition-all border border-blue-100"
             >
               <div className="flex items-center mb-6">
@@ -108,11 +108,11 @@ export default function Skills() {
                       <StarRating rating={skill.level} />
                     </div>
                     <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div 
+                      <motion.div
                         className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${(skill.level / 5) * 100}%` }}
-                        transition={{ duration: 1, ease: "easeOut" }}
+                        transition={{ duration: 1, ease: 'easeOut' }}
                       />
                     </div>
                   </motion.div>
@@ -138,7 +138,7 @@ export default function Skills() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.1 * index }}
-                whileHover={{ scale: 1.1, boxShadow: "0 5px 15px rgba(59, 130, 246, 0.15)" }}
+                whileHover={{ scale: 1.1, boxShadow: '0 5px 15px rgba(59, 130, 246, 0.15)' }}
                 whileTap={{ scale: 0.95 }}
                 className="px-5 py-2.5 bg-white border border-blue-100 text-blue-600 rounded-full text-sm font-medium
                          hover:bg-gradient-to-r from-blue-600 to-indigo-600 hover:text-white transition-all cursor-pointer shadow-sm"

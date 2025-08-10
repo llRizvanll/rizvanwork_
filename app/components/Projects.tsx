@@ -1,33 +1,49 @@
-'use client'
+/**
+ * @fileoverview Projects section component that displays a portfolio of work
+ * with filtering, search, and interactive project cards.
+ */
 
-import { motion } from 'framer-motion'
-import Section from './Section'
-import { useState } from 'react'
-import GitHubRepos from './GitHubRepos'
-import projectsData from '@/data/projects.json'
-import { ProjectsBackground } from './ProjectsBackground'
-import { ProjectCard } from './ProjectCard'
-import { ProjectSearch } from './shared/ProjectSearch'
-import { useProjectFilter } from '../hooks/useProjectFilter'
-import { Project, TechSkill, ProjectsData } from '../types'
-import { FADE_IN_DOWN, FADE_IN_UP, SCALE_ON_HOVER } from '../constants'
-import { generateKey } from '../utils'
+'use client';
+
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import type { ReactElement } from 'react';
+
+import { useProjectFilter } from '../hooks/useProjectFilter';
+import type { IProject, ITechSkill, IProjectsData } from '../types';
+import { FADE_IN_DOWN, FADE_IN_UP, SCALE_ON_HOVER } from '../constants';
+import { generateKey } from '../utils';
+import projectsData from '@/data/projects.json';
+
+import Section from './Section';
+import GitHubRepos from './GitHubRepos';
+import { ProjectsBackground } from './ProjectsBackground';
+import { ProjectCard } from './ProjectCard';
+import { ProjectSearch } from './shared/ProjectSearch';
 
 // Type assertion for the imported JSON data
-const typedProjectsData = projectsData as ProjectsData
+const typedProjectsData = projectsData as IProjectsData;
 
 // Sub-components for better modularity
-interface ProjectHeaderProps {
+interface IProjectHeaderProps {
   heading: string;
   subheading: string;
 }
 
-const ProjectHeader: React.FC<ProjectHeaderProps> = ({ heading, subheading }) => (
+/**
+ * ProjectHeader component that displays the section title and description.
+ *
+ * @param props - The component props
+ * @param props.heading - The main heading text
+ * @param props.subheading - The subheading description text
+ * @returns The ProjectHeader component JSX element
+ */
+const ProjectHeader = ({ heading, subheading }: IProjectHeaderProps): ReactElement => (
   <motion.div
     {...FADE_IN_DOWN}
     className="text-center mb-16"
   >
-    <motion.span 
+    <motion.span
       className="inline-block text-blue-600 font-medium text-sm uppercase tracking-wider mb-2 px-4 py-1 bg-blue-50 rounded-full"
       {...SCALE_ON_HOVER}
     >
@@ -40,17 +56,26 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ heading, subheading }) =>
   </motion.div>
 );
 
-interface ProjectFiltersProps {
+interface IProjectFiltersProps {
   filters: string[];
   activeFilter: string;
   onFilterChange: (filter: string) => void;
 }
 
-const ProjectFilters: React.FC<ProjectFiltersProps> = ({ 
-  filters, 
-  activeFilter, 
-  onFilterChange 
-}) => (
+/**
+ * ProjectFilters component that displays filter buttons for project categories.
+ *
+ * @param props - The component props
+ * @param props.filters - Array of available filter options
+ * @param props.activeFilter - Currently selected filter
+ * @param props.onFilterChange - Callback function when filter changes
+ * @returns The ProjectFilters component JSX element
+ */
+const ProjectFilters = ({
+  filters,
+  activeFilter,
+  onFilterChange,
+}: IProjectFiltersProps): ReactElement => (
   <motion.div
     {...FADE_IN_UP}
     className="flex justify-center gap-4 mb-8 flex-wrap"
@@ -74,11 +99,18 @@ const ProjectFilters: React.FC<ProjectFiltersProps> = ({
   </motion.div>
 );
 
-interface ProjectGridProps {
-  projects: Project[];
+interface IProjectGridProps {
+  projects: IProject[];
 }
 
-const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => (
+/**
+ * ProjectGrid component that displays a grid of project cards.
+ *
+ * @param props - The component props
+ * @param props.projects - Array of projects to display
+ * @returns The ProjectGrid component JSX element
+ */
+const ProjectGrid = ({ projects }: IProjectGridProps): ReactElement => (
   <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {projects.map((project, index) => (
       <ProjectCard
@@ -90,12 +122,20 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects }) => (
   </motion.div>
 );
 
-interface ProjectCTAProps {
+interface IProjectCTAProps {
   ctaText: string;
   githubButtonText: string;
 }
 
-const ProjectCTA: React.FC<ProjectCTAProps> = ({ ctaText, githubButtonText }) => (
+/**
+ * ProjectCTA component that displays call-to-action section with GitHub link.
+ *
+ * @param props - The component props
+ * @param props.ctaText - The call-to-action text
+ * @param props.githubButtonText - The GitHub button text
+ * @returns The ProjectCTA component JSX element
+ */
+const ProjectCTA = ({ ctaText, githubButtonText }: IProjectCTAProps): ReactElement => (
   <motion.div
     {...FADE_IN_UP}
     transition={{ delay: 0.3 }}
@@ -109,9 +149,9 @@ const ProjectCTA: React.FC<ProjectCTAProps> = ({ ctaText, githubButtonText }) =>
       target="_blank"
       rel="noopener noreferrer"
       {...SCALE_ON_HOVER}
-      whileHover={{ 
-        scale: 1.05, 
-        boxShadow: "0 10px 20px rgba(59, 130, 246, 0.3)" 
+      whileHover={{
+        scale: 1.05,
+        boxShadow: '0 10px 20px rgba(59, 130, 246, 0.3)',
       }}
       className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg shadow-lg shadow-blue-500/20 transition-all"
       aria-label="Visit my GitHub profile to see more projects"
@@ -122,22 +162,28 @@ const ProjectCTA: React.FC<ProjectCTAProps> = ({ ctaText, githubButtonText }) =>
   </motion.div>
 );
 
-export default function Projects() {
-  const { 
-    techSkills, 
-    projects, 
-    filters, 
-    heading, 
-    subheading, 
-    ctaText, 
-    githubButtonText 
-  } = typedProjectsData
+/**
+ * Projects component that displays a portfolio of work with filtering and search capabilities.
+ * Includes project cards, category filters, search functionality, and call-to-action.
+ *
+ * @returns The Projects component JSX element
+ */
+export function Projects(): ReactElement {
+  const {
+    techSkills,
+    projects,
+    filters,
+    heading,
+    subheading,
+    ctaText,
+    githubButtonText,
+  } = typedProjectsData;
 
-  const { activeFilter, setActiveFilter, filteredProjects: impactFilteredProjects } = useProjectFilter(projects, 'All')
-  
+  const { activeFilter, setActiveFilter, filteredProjects: impactFilteredProjects } = useProjectFilter(projects, 'All');
+
   // State for search results
-  const [searchResults, setSearchResults] = useState<Project[]>(impactFilteredProjects);
-  
+  const [searchResults, setSearchResults] = useState<IProject[]>(impactFilteredProjects);
+
   // Use search results if available, otherwise fall back to impact filtered projects
   const displayProjects = searchResults.length > 0 ? searchResults : impactFilteredProjects;
 
@@ -150,7 +196,7 @@ export default function Projects() {
         <ProjectHeader heading={heading} subheading={subheading} />
 
         {/* Project Filters */}
-        <ProjectFilters 
+        <ProjectFilters
           filters={['All', ...filters]}
           activeFilter={activeFilter}
           onFilterChange={setActiveFilter}
@@ -158,7 +204,7 @@ export default function Projects() {
 
         {/* Enhanced Search and Filtering */}
         <div className="mb-12">
-          <ProjectSearch 
+          <ProjectSearch
             projects={projects}
             onSearchResults={setSearchResults}
             className="max-w-4xl mx-auto"
@@ -178,5 +224,8 @@ export default function Projects() {
         <ProjectCTA ctaText={ctaText} githubButtonText={githubButtonText} />
       </div>
     </Section>
-  )
+  );
 }
+
+// Legacy default export for backward compatibility
+export default Projects;

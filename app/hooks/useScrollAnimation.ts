@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 interface UseScrollAnimationOptions {
   threshold?: number;
@@ -6,7 +6,7 @@ interface UseScrollAnimationOptions {
 }
 
 export const useScrollAnimation = (
-  elementId: string, 
+  elementId: string,
   options: UseScrollAnimationOptions = {}
 ) => {
   const { threshold = 0.75, triggerOnce = true } = options;
@@ -25,11 +25,11 @@ export const useScrollAnimation = (
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [elementId, threshold, triggerOnce, isAnimated]);
 
   return { isAnimated, animateTimeline: isAnimated };

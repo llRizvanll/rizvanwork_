@@ -1,11 +1,11 @@
-import { ThemeConfig } from '../types'
+import { ThemeConfig } from '../types';
 
 // Environment configuration
 export const ENV_CONFIG = {
   isDevelopment: process.env.NODE_ENV === 'development',
   isProduction: process.env.NODE_ENV === 'production',
   isTest: process.env.NODE_ENV === 'test',
-} as const
+} as const;
 
 // Application configuration
 export const APP_CONFIG = {
@@ -18,7 +18,7 @@ export const APP_CONFIG = {
     phone: '+1 (555) 123-4567',
     location: 'San Francisco, CA',
   },
-} as const
+} as const;
 
 // Performance configuration
 export const PERFORMANCE_CONFIG = {
@@ -40,7 +40,7 @@ export const PERFORMANCE_CONFIG = {
     threshold: 0.1,
     rootMargin: '50px',
   },
-} as const
+} as const;
 
 // SEO configuration
 export const SEO_CONFIG = {
@@ -60,7 +60,7 @@ export const SEO_CONFIG = {
     'Full Stack',
     'Portfolio',
   ],
-} as const
+} as const;
 
 // Analytics configuration
 export const ANALYTICS_CONFIG = {
@@ -72,7 +72,7 @@ export const ANALYTICS_CONFIG = {
     enabled: false,
     scriptUrl: 'https://scripts.simpleanalyticscdn.com/latest.js',
   },
-} as const
+} as const;
 
 // Feature flags for easy toggling
 export const FEATURE_FLAGS = {
@@ -89,7 +89,7 @@ export const FEATURE_FLAGS = {
   imageOptimization: true,
   codeSplitting: true,
   lazyLoading: true,
-} as const
+} as const;
 
 // Theme configuration
 export const THEME_CONFIG: ThemeConfig = {
@@ -107,7 +107,7 @@ export const THEME_CONFIG: ThemeConfig = {
     lg: '1.5rem',
     xl: '2rem',
   },
-} as const
+} as const;
 
 // Content configuration
 export const CONTENT_CONFIG = {
@@ -127,7 +127,7 @@ export const CONTENT_CONFIG = {
     platforms: ['github', 'linkedin', 'twitter'] as const,
     updateInterval: 300000, // 5 minutes
   },
-} as const
+} as const;
 
 // Error handling configuration
 export const ERROR_CONFIG = {
@@ -149,7 +149,7 @@ export const ERROR_CONFIG = {
     errorMessageDuration: 5000,
     showRetryOptions: true,
   },
-} as const
+} as const;
 
 // Accessibility configuration
 export const ACCESSIBILITY_CONFIG = {
@@ -174,7 +174,7 @@ export const ACCESSIBILITY_CONFIG = {
     minimumRatio: 4.5,
     enableHighContrast: false,
   },
-} as const
+} as const;
 
 // Development and debugging configuration
 export const DEV_CONFIG = {
@@ -196,4 +196,4 @@ export const DEV_CONFIG = {
     enableSourceMaps: ENV_CONFIG.isDevelopment,
     enableFastRefresh: true,
   },
-} as const
+} as const;

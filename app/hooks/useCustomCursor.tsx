@@ -15,9 +15,9 @@ export const useCustomCursor = () => {
       setCursorPosition({ x: event.clientX, y: event.clientY });
       setShowCursor(true);
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     // Cleanup
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);

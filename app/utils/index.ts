@@ -1,4 +1,4 @@
-import { Project, TechSkill, Company, EducationItem, Skill } from '../types'
+import { Project, TechSkill, Company, EducationItem, Skill } from '../types';
 
 /**
  * Utility functions for common operations across the application
@@ -11,12 +11,12 @@ import { Project, TechSkill, Company, EducationItem, Skill } from '../types'
  * @returns Filtered array of projects
  */
 export const filterProjects = (projects: Project[], filter: string): Project[] => {
-  if (filter === 'All') return projects
-  
-  return projects.filter(project => 
+  if (filter === 'All') return projects;
+
+  return projects.filter(project =>
     project.tech.includes(filter) || project.category === filter
-  )
-}
+  );
+};
 
 /**
  * Sorts projects by a given criteria
@@ -26,23 +26,23 @@ export const filterProjects = (projects: Project[], filter: string): Project[] =
  * @returns Sorted array of projects
  */
 export const sortProjects = (
-  projects: Project[], 
-  sortBy: keyof Project = 'title', 
+  projects: Project[],
+  sortBy: keyof Project = 'title',
   order: 'asc' | 'desc' = 'asc'
 ): Project[] => {
   return [...projects].sort((a, b) => {
-    const aValue = a[sortBy]
-    const bValue = b[sortBy]
-    
+    const aValue = a[sortBy];
+    const bValue = b[sortBy];
+
     if (typeof aValue === 'string' && typeof bValue === 'string') {
-      return order === 'asc' 
+      return order === 'asc'
         ? aValue.localeCompare(bValue)
-        : bValue.localeCompare(aValue)
+        : bValue.localeCompare(aValue);
     }
-    
-    return 0
-  })
-}
+
+    return 0;
+  });
+};
 
 /**
  * Groups projects by category
@@ -51,14 +51,14 @@ export const sortProjects = (
  */
 export const groupProjectsByCategory = (projects: Project[]): Record<string, Project[]> => {
   return projects.reduce((groups, project) => {
-    const category = project.category
+    const category = project.category;
     if (!groups[category]) {
-      groups[category] = []
+      groups[category] = [];
     }
-    groups[category].push(project)
-    return groups
-  }, {} as Record<string, Project[]>)
-}
+    groups[category].push(project);
+    return groups;
+  }, {} as Record<string, Project[]>);
+};
 
 /**
  * Gets unique technologies from all projects
@@ -66,12 +66,12 @@ export const groupProjectsByCategory = (projects: Project[]): Record<string, Pro
  * @returns Array of unique technology names
  */
 export const getUniqueTechnologies = (projects: Project[]): string[] => {
-  const techSet = new Set<string>()
+  const techSet = new Set<string>();
   projects.forEach(project => {
-    project.tech.forEach(tech => techSet.add(tech))
-  })
-  return Array.from(techSet).sort()
-}
+    project.tech.forEach(tech => techSet.add(tech));
+  });
+  return Array.from(techSet).sort();
+};
 
 /**
  * Formats date strings to a readable format
@@ -80,19 +80,19 @@ export const getUniqueTechnologies = (projects: Project[]): string[] => {
  * @returns Formatted date string
  */
 export const formatDate = (
-  dateString: string, 
-  options: Intl.DateTimeFormatOptions = { 
-    year: 'numeric', 
-    month: 'short' 
+  dateString: string,
+  options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
   }
 ): string => {
   try {
-    const date = new Date(dateString)
-    return new Intl.DateTimeFormat('en-US', options).format(date)
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', options).format(date);
   } catch {
-    return dateString
+    return dateString;
   }
-}
+};
 
 /**
  * Truncates text to a specified length
@@ -102,13 +102,13 @@ export const formatDate = (
  * @returns Truncated text
  */
 export const truncateText = (
-  text: string, 
-  maxLength: number, 
+  text: string,
+  maxLength: number,
   suffix: string = '...'
 ): string => {
-  if (text.length <= maxLength) return text
-  return text.slice(0, maxLength).trim() + suffix
-}
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trim() + suffix;
+};
 
 /**
  * Generates a unique key for React components
@@ -117,8 +117,8 @@ export const truncateText = (
  * @returns Unique key string
  */
 export const generateKey = (prefix: string, id: string | number): string => {
-  return `${prefix}-${id}`
-}
+  return `${prefix}-${id}`;
+};
 
 /**
  * Debounces a function call
@@ -127,16 +127,16 @@ export const generateKey = (prefix: string, id: string | number): string => {
  * @returns Debounced function
  */
 export const debounce = <T extends (...args: any[]) => any>(
-  func: T, 
+  func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {
-  let timeoutId: NodeJS.Timeout
-  
+  let timeoutId: NodeJS.Timeout;
+
   return (...args: Parameters<T>) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => func(...args), wait)
-  }
-}
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), wait);
+  };
+};
 
 /**
  * Throttles a function call
@@ -145,19 +145,19 @@ export const debounce = <T extends (...args: any[]) => any>(
  * @returns Throttled function
  */
 export const throttle = <T extends (...args: any[]) => any>(
-  func: T, 
+  func: T,
   limit: number
 ): ((...args: Parameters<T>) => void) => {
-  let inThrottle: boolean
-  
+  let inThrottle: boolean;
+
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
-      func(...args)
-      inThrottle = true
-      setTimeout(() => inThrottle = false, limit)
+      func(...args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
     }
-  }
-}
+  };
+};
 
 /**
  * Checks if a value is within a specified range
@@ -167,8 +167,8 @@ export const throttle = <T extends (...args: any[]) => any>(
  * @returns Boolean indicating if value is in range
  */
 export const isInRange = (value: number, min: number, max: number): boolean => {
-  return value >= min && value <= max
-}
+  return value >= min && value <= max;
+};
 
 /**
  * Capitalizes the first letter of a string
@@ -176,8 +176,8 @@ export const isInRange = (value: number, min: number, max: number): boolean => {
  * @returns Capitalized string
  */
 export const capitalize = (str: string): string => {
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
-}
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
 
 /**
  * Generates a random ID
@@ -185,13 +185,13 @@ export const capitalize = (str: string): string => {
  * @returns Random ID string
  */
 export const generateRandomId = (length: number = 8): string => {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  let result = ''
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
   for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length))
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return result
-}
+  return result;
+};
 
 /**
  * Deep clones an object
@@ -199,17 +199,17 @@ export const generateRandomId = (length: number = 8): string => {
  * @returns Deep cloned object
  */
 export const deepClone = <T>(obj: T): T => {
-  if (obj === null || typeof obj !== 'object') return obj
-  if (obj instanceof Date) return new Date(obj.getTime()) as T
-  if (obj instanceof Array) return obj.map(item => deepClone(item)) as T
+  if (obj === null || typeof obj !== 'object') return obj;
+  if (obj instanceof Date) return new Date(obj.getTime()) as T;
+  if (obj instanceof Array) return obj.map(item => deepClone(item)) as T;
   if (typeof obj === 'object') {
-    const clonedObj = {} as T
+    const clonedObj = {} as T;
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
-        clonedObj[key] = deepClone(obj[key])
+        clonedObj[key] = deepClone(obj[key]);
       }
     }
-    return clonedObj
+    return clonedObj;
   }
-  return obj
-}
+  return obj;
+};

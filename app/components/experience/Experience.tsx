@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Section from "../Section";
-import experienceData from "@/data/experience.json";
-import BackgroundEffects from "./BackgroundEffects";
-import SectionHeader from "../shared/SectionHeader";
-import TechnologyFilter from "./TechnologyFilter";
-import ExperienceTimeline from "./ExperienceTimeline";
-import AchievementsSection from "./AchievementsSection";
-import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { useState } from 'react';
+import Section from '../Section';
+import experienceData from '@/data/experience.json';
+import BackgroundEffects from './BackgroundEffects';
+import SectionHeader from '../shared/SectionHeader';
+import TechnologyFilter from './TechnologyFilter';
+import ExperienceTimeline from './ExperienceTimeline';
+import AchievementsSection from './AchievementsSection';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export default function Experience() {
-  const [filter, setFilter] = useState("all");
-  
-  const { 
-    title, 
-    subtitle, 
-    experiences, 
-    achievements, 
-    animation 
+  const [filter, setFilter] = useState('all');
+
+  const {
+    title,
+    subtitle,
+    experiences,
+    achievements,
+    animation,
   } = experienceData;
 
   // Custom hook for scroll-based animation
-  const { animateTimeline } = useScrollAnimation("experience");
+  const { animateTimeline } = useScrollAnimation('experience');
 
   // Filter experiences based on selected technology
-  const filteredExperiences = filter === "all" 
-    ? experiences 
+  const filteredExperiences = filter === 'all'
+    ? experiences
     : experiences.filter(exp => exp.tech.includes(filter));
-    
+
   // Get unique technologies for filter options
   const uniqueTechnologies = [...new Set(experiences.flatMap(exp => exp.tech))];
 
@@ -40,18 +40,18 @@ export default function Experience() {
       <BackgroundEffects />
 
       <div className="content-wrapper max-w-5xl mx-auto px-4 relative z-10">
-        <SectionHeader 
+        <SectionHeader
           title={title}
           subtitle={subtitle}
         />
-        
-        <TechnologyFilter 
+
+        <TechnologyFilter
           technologies={uniqueTechnologies}
           currentFilter={filter}
           onFilterChange={setFilter}
         />
 
-        <ExperienceTimeline 
+        <ExperienceTimeline
           experiences={filteredExperiences}
           animateTimeline={animateTimeline}
           animation={animation}

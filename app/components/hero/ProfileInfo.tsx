@@ -1,18 +1,37 @@
-import { motion } from "framer-motion";
-import Typewriter from 'typewriter-effect';
-import { trackEvent } from "../../GoogleAnalytics";
+/**
+ * @fileoverview Profile information component that displays the main
+ * personal information including name, title, description, and action buttons.
+ */
 
-export default function ProfileInfo() {
-  const handleContactClick = () => {
+import { motion } from 'framer-motion';
+import type { ReactElement } from 'react';
+import Typewriter from 'typewriter-effect';
+
+import { trackEvent } from '../../GoogleAnalytics';
+
+/**
+ * ProfileInfo component that displays personal information and call-to-action buttons.
+ * Includes animated typewriter effect for dynamic title display.
+ *
+ * @returns The ProfileInfo component JSX element
+ */
+export function ProfileInfo(): ReactElement {
+  /**
+   * Handles contact button click events and tracks analytics.
+   */
+  const handleContactClick = (): void => {
     trackEvent('click', 'hero', 'contact_button');
   };
 
-  const handleResumeClick = () => {
+  /**
+   * Handles resume download click events and tracks analytics.
+   */
+  const handleResumeClick = (): void => {
     trackEvent('click', 'hero', 'resume_download');
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
@@ -21,7 +40,7 @@ export default function ProfileInfo() {
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 text-fb-black">
         Rizvan Hawaldar
       </h1>
-      
+
       <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-4 sm:mb-6 text-fb-blue">
         <Typewriter
           options={{
@@ -34,7 +53,7 @@ export default function ProfileInfo() {
               'Mobile Security Engineer',
               'React Native Expert',
               'AI Engineering Enthusiast',
-              'Android & iOS Developer'
+              'Android & iOS Developer',
             ],
             autoStart: true,
             loop: true,
@@ -43,11 +62,11 @@ export default function ProfileInfo() {
           }}
         />
       </h2>
-      
+
       <p className="text-base sm:text-lg mb-6 sm:mb-8 mx-auto md:mx-0 max-w-md text-gray-600">
         I build exceptional mobile experiences with code and creativity. Specializing in cross-platform solutions and AI/ML integrations.
       </p>
-      
+
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
         <motion.a
           href="#contact"
@@ -58,7 +77,7 @@ export default function ProfileInfo() {
         >
           Get In Touch
         </motion.a>
-        
+
         <motion.a
           href="/assets/rizvan_hawaldar_2024.pdf"
           target="_blank"
@@ -73,4 +92,7 @@ export default function ProfileInfo() {
       </div>
     </motion.div>
   );
-} 
+}
+
+// Legacy default export for backward compatibility
+export default ProfileInfo;

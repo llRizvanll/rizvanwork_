@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion, AnimatePresence } from "framer-motion";
-import ExperienceCard from "./ExperienceCard";
+import { motion, AnimatePresence } from 'framer-motion';
+import ExperienceCard from './ExperienceCard';
 
 interface ExperienceData {
   company: string;
@@ -22,11 +22,11 @@ interface ExperienceTimelineProps {
   onTechClick: (tech: string) => void;
 }
 
-export default function ExperienceTimeline({ 
-  experiences, 
-  animateTimeline, 
+export default function ExperienceTimeline({
+  experiences,
+  animateTimeline,
   animation,
-  onTechClick 
+  onTechClick,
 }: ExperienceTimelineProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,25 +41,25 @@ export default function ExperienceTimeline({
 
   const timelineVariants = {
     hidden: { scaleY: 0 },
-    visible: { 
-      scaleY: 1, 
-      transition: { 
+    visible: {
+      scaleY: 1,
+      transition: {
         duration: animation.timelineDuration,
-        ease: "easeOut" 
-      } 
-    }
+        ease: 'easeOut',
+      },
+    },
   };
 
   return (
     <div className="relative">
       {/* Timeline line */}
-      <motion.div 
-        className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600/80 via-blue-600/60 to-blue-400/20 
+      <motion.div
+        className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600/80 via-blue-600/60 to-blue-400/20
                  transform -translate-x-1/2 md:block hidden"
         variants={timelineVariants}
         initial="hidden"
-        animate={animateTimeline ? "visible" : "hidden"}
-        style={{ transformOrigin: "top" }}
+        animate={animateTimeline ? 'visible' : 'hidden'}
+        style={{ transformOrigin: 'top' }}
       />
 
       <AnimatePresence mode="wait">
@@ -71,7 +71,7 @@ export default function ExperienceTimeline({
           className="relative space-y-12 md:space-y-24"
         >
           {experiences.map((exp, index) => (
-            <ExperienceCard 
+            <ExperienceCard
               key={`${exp.company}-${exp.role}`}
               experience={exp}
               index={index}
@@ -82,4 +82,4 @@ export default function ExperienceTimeline({
       </AnimatePresence>
     </div>
   );
-} 
+}

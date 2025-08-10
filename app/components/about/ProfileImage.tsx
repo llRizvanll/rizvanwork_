@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const ProfileImage: React.FC = () => {
-  const placeholderImage = "/assets/profile_image.jpeg"; // Update with your image path
+  const placeholderImage = '/assets/profile_image.jpeg'; // Update with your image path
 
   return (
     <div className="aspect-square relative rounded-2xl overflow-hidden">

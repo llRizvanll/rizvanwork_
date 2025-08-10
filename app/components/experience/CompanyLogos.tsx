@@ -1,74 +1,74 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Section from "../Section";
-import CompanyLogoCard from "./CompanyLogoCard"; 
+import { motion } from 'framer-motion';
+import Section from '../Section';
+import CompanyLogoCard from './CompanyLogoCard';
 
 const CompanyLogos: React.FC = () => {
   const companies = [
     {
-      name: "Loop Health",
-      logo: "/assets/images/companies/loophealth.png",
-      alt: "Loop Health Logo",
-      year: "2022-2023",
-      location: "Bangalore, India",
+      name: 'Loop Health',
+      logo: '/assets/images/companies/loophealth.png',
+      alt: 'Loop Health Logo',
+      year: '2022-2023',
+      location: 'Bangalore, India',
     },
     {
-      name: "Baker Hughes",
-      logo: "/assets/images/companies/bhge.png",
-      alt: "Baker Hughes Logo",
-      year: "2017-2022",
-      location: "Bangalore, India",
+      name: 'Baker Hughes',
+      logo: '/assets/images/companies/bhge.png',
+      alt: 'Baker Hughes Logo',
+      year: '2017-2022',
+      location: 'Bangalore, India',
     },
     {
-      name: "Justdial",
-      logo: "/assets/images/companies/jd.webp",
-      alt: "Justdial Logo",
-      year: "2012-2016",
-      location: "Mumbai, India",
+      name: 'Justdial',
+      logo: '/assets/images/companies/jd.webp',
+      alt: 'Justdial Logo',
+      year: '2012-2016',
+      location: 'Mumbai, India',
     },
     {
-      name: "Shaw Academy",
-      logo: "/assets/images/companies/sh.png",
-      alt: "Shaw Academy Logo",
-      year: "2016-2017",
-      location: "Bangalore, India",
+      name: 'Shaw Academy',
+      logo: '/assets/images/companies/sh.png',
+      alt: 'Shaw Academy Logo',
+      year: '2016-2017',
+      location: 'Bangalore, India',
     },
     {
-      name: "Xelp Design",
-      logo: "/assets/images/companies/xelp.jpg",
-      alt: "Xelp Design Logo",
-      year: "2015-2016",
-      location: "Mumbai, India",
+      name: 'Xelp Design',
+      logo: '/assets/images/companies/xelp.jpg',
+      alt: 'Xelp Design Logo',
+      year: '2015-2016',
+      location: 'Mumbai, India',
     },
     {
-      name: "Swiftsku",
-      logo: "/assets/images/companies/swiftsku.png",
-      alt: "Swiftsku USA",
-      year: "2023-2023",
-      location: "Remote, USA",
+      name: 'Swiftsku',
+      logo: '/assets/images/companies/swiftsku.png',
+      alt: 'Swiftsku USA',
+      year: '2023-2023',
+      location: 'Remote, USA',
     },
     {
-      name: "NCR",
-      logo: "/assets/images/companies/ncr.jpg",
-      alt: "NCR USA Logo",
-      year: "-",
-      location: "Remote, USA",
+      name: 'NCR',
+      logo: '/assets/images/companies/ncr.jpg',
+      alt: 'NCR USA Logo',
+      year: '-',
+      location: 'Remote, USA',
     },
     {
-      name: "Expedia",
-      logo: "/assets/images/companies/expedia.webp",
-      alt: "Expedia Logo",
-      year: "2022-2023",
-      location: "Remote, USA",
+      name: 'Expedia',
+      logo: '/assets/images/companies/expedia.webp',
+      alt: 'Expedia Logo',
+      year: '2022-2023',
+      location: 'Remote, USA',
     },
     {
-      name: "Irish Life",
-      logo: "/assets/images/companies/irishlife.svg",
-      alt: "Irish Life Logo",
-      year: "2022-2023",
-      location: "Remote, Ireland(Europe)",
-    }
+      name: 'Irish Life',
+      logo: '/assets/images/companies/irishlife.svg',
+      alt: 'Irish Life Logo',
+      year: '2022-2023',
+      location: 'Remote, Ireland(Europe)',
+    },
   ];
 
   return (
@@ -77,9 +77,9 @@ const CompanyLogos: React.FC = () => {
       <div className="absolute inset-0 z-0">
         {/* Base gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
-        
+
         {/* Animated floating gradients */}
-        <motion.div 
+        <motion.div
           className="absolute -bottom-[10%] -right-[5%] w-[40%] h-[30%] rounded-full bg-gradient-to-br from-blue-200/15 to-purple-200/10 blur-3xl"
           animate={{
             y: [0, 15, 0],
@@ -88,27 +88,27 @@ const CompanyLogos: React.FC = () => {
           transition={{
             duration: 14,
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: 'reverse',
           }}
         />
-        
+
         {/* Mesh gradient overlay */}
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
               radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 70%)
-            `
+            `,
           }}
         ></div>
-        
+
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+            backgroundSize: '60px 60px',
           }}
         ></div>
-        
+
         {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-20 h-20 border border-blue-200 rounded-full opacity-20"></div>
         <div className="absolute bottom-40 right-20 w-40 h-40 border border-blue-200 rounded-full opacity-20"></div>
@@ -121,7 +121,7 @@ const CompanyLogos: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <motion.span 
+          <motion.span
             className="inline-block text-blue-600 font-medium text-sm uppercase tracking-wider mb-2 px-4 py-1 bg-blue-50 rounded-full"
             whileHover={{ scale: 1.05 }}
           >

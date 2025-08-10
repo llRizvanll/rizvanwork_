@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 interface CustomCursorProps {
   cursorPosition: { x: number; y: number };
@@ -15,8 +15,8 @@ export default function CustomCursor({ cursorPosition, showCursor }: CustomCurso
         opacity: showCursor ? 1 : 0,
       }}
       initial={{ scale: 0.5, opacity: 0 }}
-      animate={{ 
-        scale: 1, 
+      animate={{
+        scale: 1,
         opacity: showCursor ? 1 : 0,
         x: cursorPosition.x - 12,
         y: cursorPosition.y - 12,
@@ -24,4 +24,4 @@ export default function CustomCursor({ cursorPosition, showCursor }: CustomCurso
       transition={{ duration: 0.15 }}
     />
   );
-} 
+}

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 interface Achievement {
   number: string;
@@ -36,7 +36,7 @@ export default function AchievementsSection({ achievements }: AchievementsSectio
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 12,
         stiffness: 100,
       },
@@ -48,14 +48,14 @@ export default function AchievementsSection({ achievements }: AchievementsSectio
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-100px' }}
       className="text-center mt-20 max-w-2xl mx-auto"
     >
-      <motion.div 
+      <motion.div
         className="inline-block p-1.5 px-4 rounded-full bg-blue-50 text-blue-600 font-medium mb-6 border border-blue-100"
-        whileHover={{ 
-          backgroundColor: "rgba(59, 130, 246, 0.2)",
-          transition: { duration: 0.3 }
+        whileHover={{
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          transition: { duration: 0.3 },
         }}
       >
         {achievements.title}
@@ -66,13 +66,13 @@ export default function AchievementsSection({ achievements }: AchievementsSectio
       <p className="text-gray-600">
         {achievements.description}
       </p>
-      
-      <motion.div 
+
+      <motion.div
         className="mt-10 flex flex-wrap justify-center gap-5"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
       >
         {/* Achievement cards */}
         {achievements.stats.map((achievement, i) => (
@@ -80,7 +80,7 @@ export default function AchievementsSection({ achievements }: AchievementsSectio
             key={i}
             variants={cardVariants}
             className="bg-white/90 backdrop-blur-sm rounded-xl shadow-md p-5 w-36 h-36 flex flex-col items-center justify-center transition-all hover:shadow-lg border border-blue-50"
-            whileHover={{ y: -5, transition: { duration: 0.3 }, boxShadow: "0 12px 25px rgba(59, 130, 246, 0.1)" }}
+            whileHover={{ y: -5, transition: { duration: 0.3 }, boxShadow: '0 12px 25px rgba(59, 130, 246, 0.1)' }}
           >
             <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-600">{achievement.number}</span>
             <span className="text-sm text-gray-600 text-center mt-2">{achievement.text}</span>
@@ -89,4 +89,4 @@ export default function AchievementsSection({ achievements }: AchievementsSectio
       </motion.div>
     </motion.div>
   );
-} 
+}

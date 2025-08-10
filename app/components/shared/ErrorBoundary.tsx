@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import React, { Component, ErrorInfo, ReactNode } from 'react'
-import { ERROR_CONFIG, ENV_CONFIG } from '../../config'
+import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { ERROR_CONFIG, ENV_CONFIG } from '../../config';
 
 interface Props {
   children: ReactNode
@@ -24,75 +24,75 @@ interface State {
  */
 export class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
-    super(props)
+    super(props);
     this.state = {
       hasError: false,
       error: null,
       errorInfo: null,
-      retryCount: 0
-    }
+      retryCount: 0,
+    };
   }
 
   static getDerivedStateFromError(error: Error): Partial<State> {
     return {
       hasError: true,
-      error
-    }
+      error,
+    };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // Log error to console in development
     if (ERROR_CONFIG.errorBoundary.logErrors) {
-      console.error('Error caught by ErrorBoundary:', error, errorInfo)
+      console.error('Error caught by ErrorBoundary:', error, errorInfo);
     }
 
     // Call custom error handler if provided
-    this.props.onError?.(error, errorInfo)
+    this.props.onError?.(error, errorInfo);
 
     // Update state with error information
     this.setState({
       error,
-      errorInfo
-    })
+      errorInfo,
+    });
   }
 
   handleRetry = () => {
-    const { retryAttempts = ERROR_CONFIG.errorBoundary.retryAttempts } = this.props
-    const { retryCount } = this.state
+    const { retryAttempts = ERROR_CONFIG.errorBoundary.retryAttempts } = this.props;
+    const { retryCount } = this.state;
 
     if (retryCount < retryAttempts) {
       this.setState(prevState => ({
-        retryCount: prevState.retryCount + 1
-      }))
+        retryCount: prevState.retryCount + 1,
+      }));
 
       // Reset error state after a delay
       setTimeout(() => {
         this.setState({
           hasError: false,
           error: null,
-          errorInfo: null
-        })
-      }, this.props.retryDelay || ERROR_CONFIG.api.retryDelay)
+          errorInfo: null,
+        });
+      }, this.props.retryDelay || ERROR_CONFIG.api.retryDelay);
     }
-  }
+  };
 
   handleReset = () => {
     this.setState({
       hasError: false,
       error: null,
       errorInfo: null,
-      retryCount: 0
-    })
-  }
+      retryCount: 0,
+    });
+  };
 
   render() {
-    const { hasError, error, retryCount } = this.state
-    const { children, fallback, retryAttempts = ERROR_CONFIG.errorBoundary.retryAttempts } = this.props
+    const { hasError, error, retryCount } = this.state;
+    const { children, fallback, retryAttempts = ERROR_CONFIG.errorBoundary.retryAttempts } = this.props;
 
     if (hasError) {
       // Custom fallback UI
       if (fallback) {
-        return fallback
+        return fallback;
       }
 
       // Default error UI
@@ -146,14 +146,14 @@ export class ErrorBoundary extends Component<Props, State> {
                   Try Again ({retryAttempts - retryCount} attempts left)
                 </button>
               )}
-              
+
               <button
                 onClick={this.handleReset}
                 className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
               >
                 Reset
               </button>
-              
+
               <button
                 onClick={() => window.location.reload()}
                 className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
@@ -170,10 +170,10 @@ export class ErrorBoundary extends Component<Props, State> {
             </div>
           </div>
         </div>
-      )
+      );
     }
 
-    return children
+    return children;
   }
 }
 
@@ -186,11 +186,11 @@ export const withErrorBoundary = <P extends object>(
     <ErrorBoundary {...errorBoundaryProps}>
       <Component {...props} />
     </ErrorBoundary>
-  )
+  );
 
-  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`
-  
-  return WrappedComponent
-}
+  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`;
 
-export default ErrorBoundary
+  return WrappedComponent;
+};
+
+export default ErrorBoundary;
