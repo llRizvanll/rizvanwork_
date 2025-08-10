@@ -236,6 +236,8 @@ The project uses a comprehensive ESLint configuration that enforces:
 
 ## 📚 Component Guidelines
 
+See the full API reference with examples in `docs/API_REFERENCE.md`.
+
 ### 1. Functional Components
 
 - Use functional components with hooks
